@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion'
+
 const team = [
   {
     name: 'person 1',
@@ -24,11 +26,36 @@ const socials = [
 ]
 
 export default function Team() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  }
+
   return (
-    <section id="team" className="section-padding bg-white">
+    <section id="team" className="section-padding bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 gap-6">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 gap-6"
+        >
           <div>
             <div className="flex items-center gap-2 text-navy font-semibold mb-4">
               <i className="fa-solid fa-users" /> Our Team
@@ -45,12 +72,23 @@ export default function Team() {
               <i className="fa-solid fa-arrow-right" />
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Team Cards */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid md:grid-cols-3 gap-8"
+        >
           {team.map((member) => (
-            <div key={member.name} className="bg-surface rounded-2xl overflow-hidden group">
+            <motion.div 
+              key={member.name} 
+              variants={itemVariants}
+              whileHover={{ y: -5 }}
+              className="bg-surface rounded-2xl overflow-hidden group"
+            >
               <div className="relative h-80">
                 <img
                   alt={member.name}
@@ -74,9 +112,9 @@ export default function Team() {
                 <h4 className="text-xl font-bold text-navy mb-1">{member.name}</h4>
                 <p className="text-sm text-muted">{member.role}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

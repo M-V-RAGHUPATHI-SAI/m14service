@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion'
+
 const services = [
   {
     title: 'Commercial & Office Cleaning',
@@ -30,23 +32,56 @@ const services = [
 ]
 
 export default function Services() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15
+      }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: { duration: 0.5, ease: "easeOut" }
+    }
+  }
+
   return (
-    <section id="services" className="section-padding bg-surface">
+    <section id="services" className="section-padding bg-surface overflow-hidden">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
           <div className="flex items-center justify-center gap-2 text-navy font-semibold mb-4">
             <i className="fa-solid fa-broom" /> Our Cleaning Services
           </div>
           <h2 className="text-4xl font-bold text-navy">Professional Cleaning Solutions</h2>
-        </div>
+        </motion.div>
 
         {/* Service Cards - Stacked List */}
-        <div className="space-y-6">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="space-y-6"
+        >
           {services.map((s) => (
-            <div
+            <motion.div
               key={s.title}
-              className="bg-white p-8 rounded-2xl card-shadow flex flex-col md:flex-row gap-8 items-center border border-surface-dim hover:shadow-xl transition-shadow duration-300"
+              variants={itemVariants}
+              whileHover={{ scale: 1.01 }}
+              className="bg-white p-8 rounded-2xl card-shadow flex flex-col md:flex-row gap-8 items-center border border-surface-dim hover:shadow-xl transition-all duration-300"
             >
               <div className="flex-1">
                 <h3 className="text-2xl font-bold text-navy mb-4">{s.title}</h3>
@@ -75,9 +110,9 @@ export default function Services() {
                   src={s.img}
                 />
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

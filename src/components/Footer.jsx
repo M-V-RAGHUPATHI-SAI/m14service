@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { MapPin, Phone, Mail, Globe } from 'lucide-react';
 
 export default function Footer() {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => { setVisible(true); }, []);
+
   return (
-    <footer className="bg-surface-lowest pt-20 pb-8 border-t border-surface-dim">
+    <footer 
+      className="bg-surface-lowest pt-20 pb-8 border-t border-surface-dim transition-all duration-1000"
+      style={{ opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(20px)' }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand Column */}
@@ -19,7 +25,7 @@ export default function Footer() {
               <a className="w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center hover:bg-brand transition-colors" target='_blank' rel='noopener noreferrer' href="#"><i className="fa-brands fa-facebook-f text-sm" /></a>
               <a className="w-10 h-10 rounded-full bg-surface text-slate-500 flex items-center justify-center hover:bg-brand hover:text-white transition-colors" target='_blank' rel='noopener noreferrer' href="https://www.instagram.com/m14service/"><i className="fa-brands fa-instagram text-sm" /></a>
               <a className="w-10 h-10 rounded-full bg-surface text-slate-500 flex items-center justify-center hover:bg-brand hover:text-white transition-colors" target='_blank' rel='noopener noreferrer' href="#"><i className="fa-brands fa-youtube text-sm" /></a>
-              <a className="w-10 h-10 rounded-full bg-surface text-slate-500 flex items-center justify-center hover:bg-brand hover:text-white transition-colors" target='_blank' rel='noopener noreferrer' href="#"><i className="fa-brands fa-x-twitter text-sm" /></a>
+              <a className="w-10 h-10 rounded-full bg-surface text-slate-500 flex items-center justify-center hover:bg-brand hover:text-white transition-colors" target='_blank' rel='noopener noreferrer' href="#"><i className="fa-brands fa-twitter text-sm" /></a>
             </div>
           </div>
           

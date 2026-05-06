@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const projects = [
   {
@@ -28,11 +29,37 @@ const projects = [
 ];
 
 export default function Portfolio() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15
+      }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, scale: 0.95, y: 20 },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+    }
+  }
+
   return (
-    <section id="portfolio" className="section-padding bg-surface-lowest">
+    <section id="portfolio" className="section-padding bg-surface-lowest overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
           <div className="flex items-center justify-center gap-2 text-accent font-semibold mb-4 tracking-wider uppercase text-sm">
             <div className="h-px w-8 bg-accent"></div>
             Our Recent Work
@@ -41,13 +68,21 @@ export default function Portfolio() {
           <h2 className="text-4xl md:text-5xl font-bold text-navy leading-tight">
             Delivering Excellence <br className="hidden md:block" /> In Every Project
           </h2>
-        </div>
+        </motion.div>
 
         {/* Portfolio Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+        >
           {projects.map((project, index) => (
-            <div 
+            <motion.div 
               key={index} 
+              variants={itemVariants}
+              whileHover={{ y: -5 }}
               className="group relative overflow-hidden rounded-3xl bg-navy aspect-[4/3] cursor-pointer"
             >
               {/* Image */}
@@ -75,17 +110,23 @@ export default function Portfolio() {
               <div className="absolute top-6 right-6 w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <i className="fa-solid fa-arrow-up-right-from-square" />
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* View All Button */}
-        <div className="mt-16 text-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-16 text-center"
+        >
           <button className="px-10 py-4 bg-navy text-white font-bold rounded-full hover:bg-accent transition-all duration-300 shadow-xl shadow-navy/20 flex items-center gap-3 mx-auto">
             View All Projects
             <i className="fa-solid fa-arrow-right-long" />
           </button>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

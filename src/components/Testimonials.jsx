@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 
 const testimonials = [
   {
@@ -43,20 +44,54 @@ function Stars({ count }) {
 export default function Testimonials() {
   const [active, setActive] = useState(0)
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      transition: { duration: 0.5, ease: "easeOut" }
+    }
+  }
+
   return (
-    <section id="testimonials" className="section-padding bg-navy text-white text-center">
+    <section id="testimonials" className="section-padding bg-navy text-white text-center overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex items-center justify-center gap-2 text-white/80 font-medium mb-4 text-sm">
-          <i className="fa-solid fa-quote-left" /> Testimonials
-        </div>
-        <h2 className="text-4xl font-bold mb-12">What Our Clients Say</h2>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="flex items-center justify-center gap-2 text-white/80 font-medium mb-4 text-sm">
+            <i className="fa-solid fa-quote-left" /> Testimonials
+          </div>
+          <h2 className="text-4xl font-bold mb-12">What Our Clients Say</h2>
+        </motion.div>
 
         {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-6 text-left">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid md:grid-cols-3 gap-6 text-left"
+        >
           {testimonials.map((t, i) => (
-            <div
+            <motion.div
               key={t.name}
+              variants={itemVariants}
+              whileHover={{ y: -5 }}
               onClick={() => setActive(i)}
               className={`bg-white/10 p-8 rounded-2xl backdrop-blur-sm border transition-all duration-300 cursor-pointer ${
                 active === i ? 'border-white/30 shadow-lg shadow-white/5' : 'border-white/10 hover:border-white/20'
@@ -82,12 +117,18 @@ export default function Testimonials() {
                   <p className="text-xs text-white/60">{t.role}</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Pagination Dots */}
-        <div className="flex justify-center gap-2 mt-8">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+          className="flex justify-center gap-2 mt-8"
+        >
           {testimonials.map((_, i) => (
             <button
               key={i}
@@ -98,7 +139,7 @@ export default function Testimonials() {
               aria-label={`Testimonial ${i + 1}`}
             />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

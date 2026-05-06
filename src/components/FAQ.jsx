@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const faqs = [
   { q: 'What cleaning services do you offer?' },
@@ -26,11 +27,16 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(1)
 
   return (
-    <section id="faq" className="section-padding bg-surface">
+    <section id="faq" className="section-padding bg-surface overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Left */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
             <div className="flex items-center gap-2 text-navy font-semibold mb-4">
               <i className="fa-regular fa-circle-question" /> FAQ
             </div>
@@ -42,25 +48,36 @@ export default function FAQ() {
             </p>
 
             {/* Still Have Questions Card */}
-            <div className="bg-white p-8 rounded-2xl border border-surface-dim flex items-center gap-6 card-shadow">
+            <motion.div 
+              whileHover={{ y: -5 }}
+              className="bg-white p-8 rounded-2xl border border-surface-dim flex items-center gap-6 card-shadow"
+            >
               <div className="w-16 h-16 rounded-full bg-surface flex items-center justify-center flex-shrink-0">
                 <i className="fa-solid fa-headset text-2xl text-accent" />
               </div>
               <div className="flex-1">
                 <h4 className="text-xl font-bold text-navy mb-2">Still Have Questions</h4>
                 <p className="text-sm text-muted mb-4">Still have questions about our cleaning services? We're here to help!</p>
-                <a
+                <motion.a
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   href="tel:7752293115"
                   className="btn-primary w-full py-3 rounded-xl font-medium text-center block text-white"
                 >
                   Discover More
-                </a>
+                </motion.a>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Right - FAQ Items */}
-          <div className="space-y-4">
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="space-y-4"
+          >
             {faqs.map((faq, i) => {
               const isOpen = openIndex === i
               const answer = answers[faq.q]
@@ -80,17 +97,28 @@ export default function FAQ() {
                     <span className={isOpen ? 'text-white' : 'text-navy'}>
                       {faq.q}
                     </span>
-                    <i className={`fa-solid ${isOpen ? 'fa-chevron-up text-white' : 'fa-chevron-down text-muted'} text-sm ml-4 flex-shrink-0`} />
+                    <motion.i 
+                      animate={{ rotate: isOpen ? 180 : 0 }}
+                      className={`fa-solid ${isOpen ? 'fa-chevron-up text-white' : 'fa-chevron-down text-muted'} text-sm ml-4 flex-shrink-0`} 
+                    />
                   </button>
-                  {isOpen && answer && (
-                    <div className="px-6 pb-4 text-sm text-white/90">
-                      {answer}
-                    </div>
-                  )}
+                  <AnimatePresence>
+                    {isOpen && answer && (
+                      <motion.div 
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="px-6 pb-4 text-sm text-white/90 overflow-hidden"
+                      >
+                        {answer}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               )
             })}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

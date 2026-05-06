@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion'
+
 const galleryImages = [
   {
     src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuClGZib-ZYXM1T_AtvPUSwYvZqRqXXoQZ8p9PGxte1Ij9-ymGLyywNsvwZcjR6apsZaFBpVXGNbE0l_v3EYkdhP8WOEF40XNZkjhBEWXzw3MUPabo0yQOOifGGyv1-LNAe_8IB93XhfRbY9FYKyIlS6NsrncNKIc2jZkTcJXZJrqHRyR0oYM6vj0hxKKbk6w2vhq5wzufVL1o39H1HUL3HRrd6tRAFa-bHee66zli95QECble-thopME-QOOQClToQamNfBNq3tgD2r',
@@ -26,11 +28,36 @@ const stats = [
 ]
 
 export default function Stats() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  }
+
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Row */}
-        <div className="grid lg:grid-cols-2 gap-12 items-end mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="grid lg:grid-cols-2 gap-12 items-end mb-16"
+        >
           <div>
             <div className="flex items-center gap-2 text-navy font-semibold mb-4">
               <i className="fa-solid fa-leaf" /> About Us
@@ -44,23 +71,44 @@ export default function Stats() {
               Learn More About Us
             </a>
           </div>
-        </div>
+        </motion.div>
 
         {/* Stats Grid */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid md:grid-cols-3 gap-8 mb-16"
+        >
           {stats.map((stat) => (
-            <div key={stat.label} className="p-6 border border-surface-dim rounded-2xl hover:shadow-lg transition-shadow duration-300">
+            <motion.div 
+              key={stat.label} 
+              variants={itemVariants}
+              whileHover={{ y: -5 }}
+              className="p-6 border border-surface-dim rounded-2xl hover:shadow-lg transition-shadow duration-300"
+            >
               <h3 className="text-4xl font-bold text-navy mb-2">{stat.num}</h3>
               <p className="font-bold text-navy mb-2">{stat.label}</p>
               <p className="text-sm text-muted">{stat.desc}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Image Gallery */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid md:grid-cols-3 gap-6"
+        >
           {galleryImages.map((img) => (
-            <div key={img.label} className="relative rounded-2xl overflow-hidden aspect-[4/5] group">
+            <motion.div 
+              key={img.label} 
+              variants={itemVariants}
+              className="relative rounded-2xl overflow-hidden aspect-[4/5] group"
+            >
               <img
                 alt={img.alt}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -73,9 +121,9 @@ export default function Stats() {
                 </div>
                 <h4 className="font-bold text-lg">{img.label}</h4>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )
