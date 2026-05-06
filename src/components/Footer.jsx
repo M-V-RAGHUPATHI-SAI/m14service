@@ -1,5 +1,5 @@
 import React from 'react';
-import { Facebook, Instagram, Youtube, Twitter, MapPin, Phone, Mail, Globe } from 'lucide-react';
+import { MapPin, Phone, Mail, Globe } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -16,10 +16,10 @@ export default function Footer() {
               At M14 Service provide professional cleaning services for homes and offices. Our team is dedicated to making every space spotless, healthy, and welcoming.
             </p>
             <div className="flex gap-4">
-              <a className="w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center hover:bg-brand transition-colors" target='_blank' rel='noopener noreferrer' href="#"><Facebook className="w-4 h-4" /></a>
-              <a className="w-10 h-10 rounded-full bg-surface text-slate-500 flex items-center justify-center hover:bg-brand hover:text-white transition-colors" target='_blank' rel='noopener noreferrer' href="https://www.instagram.com/m14service/"><Instagram className="w-4 h-4" /></a>
-              <a className="w-10 h-10 rounded-full bg-surface text-slate-500 flex items-center justify-center hover:bg-brand hover:text-white transition-colors" target='_blank' rel='noopener noreferrer' href="#"><Youtube className="w-4 h-4" /></a>
-              <a className="w-10 h-10 rounded-full bg-surface text-slate-500 flex items-center justify-center hover:bg-brand hover:text-white transition-colors" target='_blank' rel='noopener noreferrer' href="#"><Twitter className="w-4 h-4" /></a>
+              <a className="w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center hover:bg-brand transition-colors" target='_blank' rel='noopener noreferrer' href="#"><i className="fa-brands fa-facebook-f text-sm" /></a>
+              <a className="w-10 h-10 rounded-full bg-surface text-slate-500 flex items-center justify-center hover:bg-brand hover:text-white transition-colors" target='_blank' rel='noopener noreferrer' href="https://www.instagram.com/m14service/"><i className="fa-brands fa-instagram text-sm" /></a>
+              <a className="w-10 h-10 rounded-full bg-surface text-slate-500 flex items-center justify-center hover:bg-brand hover:text-white transition-colors" target='_blank' rel='noopener noreferrer' href="#"><i className="fa-brands fa-youtube text-sm" /></a>
+              <a className="w-10 h-10 rounded-full bg-surface text-slate-500 flex items-center justify-center hover:bg-brand hover:text-white transition-colors" target='_blank' rel='noopener noreferrer' href="#"><i className="fa-brands fa-x-twitter text-sm" /></a>
             </div>
           </div>
           
