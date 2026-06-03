@@ -150,7 +150,7 @@ export default function Navbar() {
                       display: 'block',
                       fontFamily: "'Inter', system-ui, sans-serif",
                       fontSize: '32px',
-                      fontWeight: 700,
+                      fontWeight: 600,
                       letterSpacing: '-0.01em',
                       color: 'white',
                       opacity: isActive ? 1 : 0.5,
