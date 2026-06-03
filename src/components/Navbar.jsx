@@ -125,8 +125,8 @@ export default function Navbar() {
           >
             {/* Top bar */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '80px', flexShrink: 0 }}>
-              <span style={{ fontSize: '22px' }}>
-                <span style={{ fontWeight: 600, color: 'var(--color-white)' }}>{businessConfig.namePart1}</span>
+              <span style={{ fontSize: '22px', fontFamily: "'Inter', system-ui, sans-serif" }}>
+                <span style={{ fontWeight: 800, color: 'var(--color-white)' }}>{businessConfig.namePart1}</span>
                 <span style={{ fontWeight: 300, color: 'var(--color-white)' }}>{businessConfig.namePart2}</span>
               </span>
               <button onClick={() => setOpen(false)} style={{ padding: '8px', color: 'white', background: 'none', border: 'none', cursor: 'pointer' }} aria-label="Close menu">
@@ -148,10 +148,12 @@ export default function Navbar() {
                     onClick={() => setOpen(false)}
                     style={({ isActive }) => ({
                       display: 'block',
+                      fontFamily: "'Inter', system-ui, sans-serif",
                       fontSize: '32px',
                       fontWeight: 700,
+                      letterSpacing: '-0.01em',
                       color: 'white',
-                      opacity: isActive ? 1 : 0.6,
+                      opacity: isActive ? 1 : 0.5,
                       padding: '12px 0',
                       borderBottom: '1px solid rgba(255,255,255,0.1)',
                       textDecoration: 'none',
@@ -172,7 +174,7 @@ export default function Navbar() {
               <Link
                 to={businessConfig.ctaPrimary.link}
                 onClick={() => setOpen(false)}
-                style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', padding: '16px', borderRadius: '9999px', background: 'var(--color-white)', color: 'var(--color-primary)', fontWeight: 700, fontSize: '16px', textDecoration: 'none' }}
+                style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', padding: '16px', borderRadius: '9999px', background: 'var(--color-white)', color: 'var(--color-primary)', fontFamily: "'Inter', system-ui, sans-serif", fontWeight: 700, fontSize: '16px', textDecoration: 'none' }}
               >
                 {businessConfig.ctaPrimary.label}
               </Link>
