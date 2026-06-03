@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+﻿import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { businessConfig } from '../businessConfig'
@@ -82,8 +82,8 @@ function Hero() {
           <Link
             to={businessConfig.ctaPrimary.link}
             style={{
-              background: '#EBEBE6',
-              color: '#1C3F3A',
+              background: 'var(--color-cream)',
+              color: 'var(--color-primary)',
               fontWeight: 700,
               fontSize: '15px',
               padding: '14px 32px',
@@ -93,12 +93,12 @@ function Hero() {
               whiteSpace: 'nowrap',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = '#ffffff'
-              e.currentTarget.style.color = '#1C3F3A'
+              e.currentTarget.style.background = 'var(--color-white)'
+              e.currentTarget.style.color = 'var(--color-primary)'
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = '#EBEBE6'
-              e.currentTarget.style.color = '#1C3F3A'
+              e.currentTarget.style.background = 'var(--color-cream)'
+              e.currentTarget.style.color = 'var(--color-primary)'
             }}
           >
             {businessConfig.ctaPrimary.label} →
@@ -136,7 +136,7 @@ function Hero() {
                 width: '40px',
                 height: '40px',
                 borderRadius: '9999px',
-                background: '#1C3F3A',
+                background: 'var(--color-primary)',
                 border: '2px solid rgba(255,255,255,0.3)',
                 display: 'flex',
                 alignItems: 'center',
@@ -154,7 +154,7 @@ function Hero() {
 
         {/* Rating */}
         <div>
-          <div style={{ color: '#E9EAE8', fontSize: '13px', letterSpacing: '2px', marginBottom: '2px' }}>★★★★★</div>
+          <div style={{ color: 'var(--color-lightGray)', fontSize: '13px', letterSpacing: '2px', marginBottom: '2px' }}>★★★★★</div>
           <div style={{ color: 'rgba(255,255,255,0.70)', fontSize: '12px', fontWeight: 400 }}>
             5.0 from over 1,200+ reviews
           </div>
@@ -168,7 +168,7 @@ function Hero() {
 function TrustBar() {
   const items = [...businessConfig.trustBar, ...businessConfig.trustBar]
   return (
-    <section className="bg-[#1C3F3A] overflow-hidden" style={{ height: '52px' }}>
+    <section className="bg-[var(--color-primary)] overflow-hidden" style={{ height: '52px' }}>
       <div className="flex items-center h-full w-max animate-marquee">
         {items.map((item, i) => (
           <div key={i} className="flex items-center flex-shrink-0">
@@ -191,20 +191,20 @@ function WhoWeAre() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      style={{ minHeight: '100vh', background: '#ffffff', padding: '96px 0', overflowX: 'hidden' }}
+      style={{ minHeight: '100vh', background: 'var(--color-white)', padding: '96px 0', overflowX: 'hidden' }}
     >
       <div style={{ maxWidth: '1152px', margin: '0 auto', padding: '0 32px' }}>
 
         {/* TOP ROW — label + headline */}
         <div style={{ marginBottom: '64px' }}>
-          <span style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#1C3F3A', display: 'block', marginBottom: '16px' }}>
+          <span style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-primary)', display: 'block', marginBottom: '16px' }}>
             Who We Are
           </span>
           <h2 style={{ maxWidth: '800px', lineHeight: 1.05 }}>
-            <span style={{ display: 'block', fontSize: 'clamp(36px, 4.5vw, 62px)', fontWeight: 300, color: '#0A0C29', letterSpacing: '-0.02em' }}>
+            <span style={{ display: 'block', fontSize: 'clamp(36px, 4.5vw, 62px)', fontWeight: 300, color: 'var(--color-dark)', letterSpacing: '-0.02em' }}>
               We don&apos;t just clean —
             </span>
-            <span style={{ display: 'block', fontSize: 'clamp(36px, 4.5vw, 62px)', fontWeight: 800, fontStyle: 'italic', fontFamily: "'Playfair Display', Georgia, serif", color: '#1C3F3A', letterSpacing: '-0.02em' }}>
+            <span style={{ display: 'block', fontSize: 'clamp(36px, 4.5vw, 62px)', fontWeight: 800, fontStyle: 'italic', fontFamily: "'Playfair Display', Georgia, serif", color: 'var(--color-primary)', letterSpacing: '-0.02em' }}>
               we transform spaces.
             </span>
           </h2>
@@ -223,14 +223,14 @@ function WhoWeAre() {
               style={{ height: '580px', borderRadius: '24px', display: 'block' }}
             />
             {/* Badge — top left */}
-            <div style={{ position: 'absolute', top: '24px', left: '-20px', background: '#1C3F3A', color: 'white', borderRadius: '16px', padding: '20px 24px', boxShadow: '0 20px 60px rgba(28,63,58,0.35)' }}>
-              <div style={{ fontSize: '28px', fontWeight: 800, lineHeight: 1 }}><CountUp end="5" suffix="+" duration={1500} /></div>
+            <div style={{ position: 'absolute', top: '24px', left: '-20px', background: 'var(--color-primary)', color: 'var(--color-white)', borderRadius: '16px', padding: '20px 24px', boxShadow: '0 20px 60px rgba(28,63,58,0.35)' }}>
+              <div style={{ fontSize: '28px', fontWeight: 800, lineHeight: 1 }}><CountUp end={businessConfig.statValues[0].num} suffix={businessConfig.statValues[0].suffix} duration={1500} /></div>
               <div style={{ fontSize: '12px', fontWeight: 500, opacity: 0.8, marginTop: '4px' }}>Years in Business</div>
             </div>
-            {/* Badge — bottom right (4.9 rating) */}
-            <div className="rating-badge" style={{ position: 'absolute', bottom: '28px', right: '-20px', background: 'white', borderRadius: '16px', padding: '20px 24px', boxShadow: '8px 8px 0px #1C3F3A', border: '1px solid #e5e7eb' }}>
-              <div className="rating-number" style={{ fontSize: '28px', fontWeight: 800, color: '#1C3F3A', lineHeight: 1 }}>★ 4.9</div>
-              <div className="rating-label" style={{ fontSize: '12px', color: '#6b7280', marginTop: '4px' }}>Average Rating</div>
+            {/* Badge — bottom right (rating) */}
+            <div className="rating-badge" style={{ position: 'absolute', bottom: '28px', right: '-20px', background: 'var(--color-white)', borderRadius: '16px', padding: '20px 24px', boxShadow: '8px 8px 0px var(--color-primary)', border: '1px solid var(--color-border)' }}>
+              <div className="rating-number" style={{ fontSize: '28px', fontWeight: 800, color: 'var(--color-primary)', lineHeight: 1 }}>★ {businessConfig.statValues[2].num}</div>
+              <div className="rating-label" style={{ fontSize: '12px', color: 'var(--color-muted)', marginTop: '4px' }}>Average Rating</div>
             </div>
           </div>
 
@@ -238,7 +238,7 @@ function WhoWeAre() {
           <div style={{ paddingTop: '8px' }}>
 
             {/* Body text */}
-            <p style={{ fontSize: '16px', fontWeight: 400, color: '#6b7280', lineHeight: 1.8, marginBottom: '40px' }}>
+            <p style={{ fontSize: '16px', fontWeight: 400, color: 'var(--color-muted)', lineHeight: 1.8, marginBottom: '40px' }}>
               {businessConfig.about}
             </p>
 
@@ -246,20 +246,20 @@ function WhoWeAre() {
             <div className="stat-cards-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '40px', overflow: 'hidden', padding: '6px', maxWidth: '100%', boxSizing: 'border-box' }}>
               <div
                 className="stat-card-white"
-                style={{ background: 'white', border: '1.5px solid #e5e7eb', borderRadius: '20px', padding: '28px 24px', boxShadow: '6px 6px 0px #1C3F3A', transition: 'transform 0.2s, box-shadow 0.2s' }}
-                onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-3px,-3px)'; e.currentTarget.style.boxShadow = '9px 9px 0px #1C3F3A' }}
-                onMouseLeave={e => { e.currentTarget.style.transform = 'translate(0,0)'; e.currentTarget.style.boxShadow = '6px 6px 0px #1C3F3A' }}
+                style={{ background: 'white', border: '1.5px solid var(--color-border)', borderRadius: '20px', padding: '28px 24px', boxShadow: '6px 6px 0px var(--color-primary)', transition: 'transform 0.2s, box-shadow 0.2s' }}
+                onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-3px,-3px)'; e.currentTarget.style.boxShadow = '9px 9px 0px var(--color-primary)' }}
+                onMouseLeave={e => { e.currentTarget.style.transform = 'translate(0,0)'; e.currentTarget.style.boxShadow = '6px 6px 0px var(--color-primary)' }}
               >
-                <div className="stat-number" style={{ fontSize: '42px', fontWeight: 800, color: '#1C3F3A', lineHeight: 1 }}><CountUp end="2400" suffix="+" duration={2000} /></div>
-                <div className="stat-label" style={{ fontSize: '13px', color: '#6b7280', marginTop: '8px' }}>Homes Cleaned</div>
+                <div className="stat-number" style={{ fontSize: '42px', fontWeight: 800, color: 'var(--color-primary)', lineHeight: 1 }}><CountUp end={businessConfig.statValues[1].num} suffix={businessConfig.statValues[1].suffix} duration={2000} /></div>
+                <div className="stat-label" style={{ fontSize: '13px', color: 'var(--color-muted)', marginTop: '8px' }}>Homes Cleaned</div>
               </div>
               <div
                 className="stat-card-dark"
-                style={{ background: '#1C3F3A', borderRadius: '20px', padding: '28px 24px', boxShadow: '6px 6px 0px #0A0C29', transition: 'transform 0.2s, box-shadow 0.2s' }}
-                onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-3px,-3px)'; e.currentTarget.style.boxShadow = '9px 9px 0px #0A0C29' }}
-                onMouseLeave={e => { e.currentTarget.style.transform = 'translate(0,0)'; e.currentTarget.style.boxShadow = '6px 6px 0px #0A0C29' }}
+                style={{ background: 'var(--color-primary)', borderRadius: '20px', padding: '28px 24px', boxShadow: '6px 6px 0px var(--color-dark)', transition: 'transform 0.2s, box-shadow 0.2s' }}
+                onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-3px,-3px)'; e.currentTarget.style.boxShadow = '9px 9px 0px var(--color-dark)' }}
+                onMouseLeave={e => { e.currentTarget.style.transform = 'translate(0,0)'; e.currentTarget.style.boxShadow = '6px 6px 0px var(--color-dark)' }}
               >
-                <div className="stat-number" style={{ fontSize: '42px', fontWeight: 800, color: 'white', lineHeight: 1 }}><CountUp end="1200" suffix="+" duration={2200} /></div>
+                <div className="stat-number" style={{ fontSize: '42px', fontWeight: 800, color: 'var(--color-white)', lineHeight: 1 }}><CountUp end={businessConfig.statValues[3].num} suffix={businessConfig.statValues[3].suffix} duration={2200} /></div>
                 <div className="stat-label" style={{ fontSize: '13px', color: 'rgba(255,255,255,0.65)', marginTop: '8px' }}>5-Star Reviews</div>
               </div>
             </div>
@@ -268,10 +268,10 @@ function WhoWeAre() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginBottom: '40px' }}>
               {businessConfig.whoWeAreChecklist.map((item, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <div style={{ width: '22px', height: '22px', borderRadius: '6px', background: '#1C3F3A', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <div style={{ width: '22px', height: '22px', borderRadius: '6px', background: 'var(--color-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <span style={{ color: 'white', fontSize: '12px', fontWeight: 700 }}>✓</span>
                   </div>
-                  <span style={{ fontSize: '15px', color: '#0A0C29', fontWeight: 500 }}>{item}</span>
+                  <span style={{ fontSize: '15px', color: 'var(--color-dark)', fontWeight: 500 }}>{item}</span>
                 </div>
               ))}
             </div>
@@ -279,7 +279,7 @@ function WhoWeAre() {
             {/* CTA link */}
             <Link
               to="/about"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '15px', fontWeight: 700, color: '#1C3F3A', textDecoration: 'none', borderBottom: '2px solid #1C3F3A', paddingBottom: '2px', transition: 'gap 0.2s' }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '15px', fontWeight: 700, color: 'var(--color-primary)', textDecoration: 'none', borderBottom: '2px solid var(--color-primary)', paddingBottom: '2px', transition: 'gap 0.2s' }}
               onMouseEnter={e => (e.currentTarget.style.gap = '14px')}
               onMouseLeave={e => (e.currentTarget.style.gap = '8px')}
             >
@@ -328,7 +328,7 @@ function Services() {
   }
 
   return (
-    <section className="bg-[#EBEBE6] py-28 overflow-hidden">
+    <section className="bg-[var(--color-cream)] py-28 overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
@@ -336,11 +336,11 @@ function Services() {
           <div>
             <p className="section-label mb-3">What We Offer</p>
             <h2 style={{ lineHeight: 1.08, letterSpacing: '-0.02em' }}>
-              <span style={{ display: 'block', fontSize: 'clamp(36px, 4vw, 54px)', fontWeight: 300, color: '#0A0C29' }}>Cleaning solutions</span>
-              <span style={{ display: 'block', fontSize: 'clamp(36px, 4vw, 54px)', fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', color: '#1C3F3A' }}>for every space.</span>
+              <span style={{ display: 'block', fontSize: 'clamp(36px, 4vw, 54px)', fontWeight: 300, color: 'var(--color-dark)' }}>Cleaning solutions</span>
+              <span style={{ display: 'block', fontSize: 'clamp(36px, 4vw, 54px)', fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', color: 'var(--color-primary)' }}>for every space.</span>
             </h2>
           </div>
-          <Link to="/services" className="text-[#1C3F3A] whitespace-nowrap hover:underline" style={{ fontWeight: 500, fontSize: '14px' }}>
+          <Link to="/services" className="text-[var(--color-primary)] whitespace-nowrap hover:underline" style={{ fontWeight: 500, fontSize: '14px' }}>
             View all services →
           </Link>
         </motion.div>
@@ -352,15 +352,15 @@ function Services() {
             const num = String(i + 1).padStart(2, '0')
 
             // Derive all style values from isActive
-            const rowBg        = isActive ? '#1C3F3A'                       : 'transparent'
+            const rowBg        = isActive ? 'var(--color-primary)'                       : 'transparent'
             const rowOpacity   = isActive ? 1                                : 0.5
             const numColor     = isActive ? 'rgba(255,255,255,0.4)'          : 'rgba(28,63,58,0.5)'
-            const nameColor    = isActive ? '#ffffff'                        : '#0A0C29'
-            const oneColor     = isActive ? 'rgba(255,255,255,0.7)'         : '#6b7280'
+            const nameColor    = isActive ? 'var(--color-white)'                        : 'var(--color-dark)'
+            const oneColor     = isActive ? 'rgba(255,255,255,0.7)'         : 'var(--color-muted)'
             const pillBg       = isActive ? 'rgba(255,255,255,0.12)'        : 'white'
-            const pillBorder   = isActive ? '1px solid rgba(255,255,255,0.2)' : '1px solid #e5e7eb'
-            const pillColor    = isActive ? 'white'                         : '#0A0C29'
-            const arrowColor   = isActive ? 'white'                         : '#1C3F3A'
+            const pillBorder   = isActive ? '1px solid rgba(255,255,255,0.2)' : '1px solid var(--color-border)'
+            const pillColor    = isActive ? 'white'                         : 'var(--color-dark)'
+            const arrowColor   = isActive ? 'white'                         : 'var(--color-primary)'
             const arrowOpacity = isActive ? 1                                : 0
             const imgFilter    = isActive ? 'brightness(1.1)'               : 'grayscale(30%)'
             const dividerOp    = isActive ? 0                                : 1
@@ -410,7 +410,7 @@ function Services() {
                       ))}
                     </div>
                     {/* Mobile learn more */}
-                    <span className="block lg:hidden mt-4" style={{ fontSize: '13px', fontWeight: 600, color: isActive ? 'white' : '#1C3F3A', transition: 'color 0.7s ease' }}>
+                    <span className="block lg:hidden mt-4" style={{ fontSize: '13px', fontWeight: 600, color: isActive ? 'white' : 'var(--color-primary)', transition: 'color 0.7s ease' }}>
                       Learn more →
                     </span>
                   </div>
@@ -450,9 +450,9 @@ function Services() {
         <div className="text-center mt-14">
           <Link
             to="/services"
-            style={{ background: 'white', color: '#1C3F3A', border: '2px solid #1C3F3A', padding: '16px 40px', borderRadius: '9999px', fontSize: '15px', fontWeight: 600, cursor: 'pointer', transition: 'all 0.25s ease', display: 'inline-block' }}
-            onMouseEnter={e => { e.currentTarget.style.background = '#1C3F3A'; e.currentTarget.style.color = 'white' }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'white'; e.currentTarget.style.color = '#1C3F3A' }}
+            style={{ background: 'white', color: 'var(--color-primary)', border: '2px solid var(--color-primary)', padding: '16px 40px', borderRadius: '9999px', fontSize: '15px', fontWeight: 600, cursor: 'pointer', transition: 'all 0.25s ease', display: 'inline-block' }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'var(--color-primary)'; e.currentTarget.style.color = 'white' }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'white'; e.currentTarget.style.color = 'var(--color-primary)' }}
           >
             See all {services.length} services
           </Link>
@@ -500,15 +500,15 @@ function HowItWorks() {
           <div className="lg:sticky" style={{ top: '80px', alignSelf: 'flex-start', maxWidth: '380px' }}>
             <p className="section-label mb-3">How It Works</p>
             <h2 style={{ fontSize: 'clamp(32px, 4vw, 42px)', letterSpacing: '-0.02em', lineHeight: 1.08, marginBottom: '20px' }}>
-              <span style={{ display: 'block', fontWeight: 300, color: '#0A0C29' }}>Our cleaning</span>
-              <span style={{ display: 'block', fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', color: '#1C3F3A' }}>process.</span>
+              <span style={{ display: 'block', fontWeight: 300, color: 'var(--color-dark)' }}>Our cleaning</span>
+              <span style={{ display: 'block', fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', color: 'var(--color-primary)' }}>process.</span>
             </h2>
-            <p className="text-[#6b7280] max-w-sm" style={{ fontWeight: 400, fontSize: '16px', lineHeight: 1.8 }}>
+            <p className="text-[var(--color-muted)] max-w-sm" style={{ fontWeight: 400, fontSize: '16px', lineHeight: 1.8 }}>
               Booking a clean takes minutes. Here&apos;s exactly what happens from the moment you reach out.
             </p>
             <Link
               to={businessConfig.ctaPrimary.link}
-              className="inline-flex items-center px-8 py-3 rounded-full bg-[#1C3F3A] text-white font-semibold"
+              className="inline-flex items-center px-8 py-3 rounded-full bg-[var(--color-primary)] text-white font-semibold"
               style={{ marginTop: '24px', marginBottom: '20px' }}
             >
               {businessConfig.ctaPrimary.label}
@@ -533,15 +533,15 @@ function HowItWorks() {
                       border: 'none',
                       cursor: 'pointer',
                       textAlign: 'left',
-                      background: on ? '#1C3F3A' : 'transparent',
+                      background: on ? 'var(--color-primary)' : 'transparent',
                       transition: 'all 0.3s ease',
                       marginBottom: isLast ? 0 : '24px',
                     }}
                   >
-                    <span style={{ fontWeight: 700, fontSize: '13px', color: on ? 'white' : '#6b7280', transition: 'color 0.3s ease' }}>
+                    <span style={{ fontWeight: 700, fontSize: '13px', color: on ? 'white' : 'var(--color-muted)', transition: 'color 0.3s ease' }}>
                       {step.number}
                     </span>
-                    <span style={{ fontWeight: 600, fontSize: '15px', color: on ? 'white' : '#6b7280', transition: 'color 0.3s ease' }}>
+                    <span style={{ fontWeight: 600, fontSize: '15px', color: on ? 'white' : 'var(--color-muted)', transition: 'color 0.3s ease' }}>
                       {step.title}
                     </span>
                   </button>
@@ -562,14 +562,14 @@ function HowItWorks() {
                       padding: '14px 16px', borderRadius: '12px',
                       width: '100%', border: 'none', cursor: 'pointer', textAlign: 'left',
                       transition: 'all 0.4s ease',
-                      background: on ? '#1C3F3A' : 'transparent',
+                      background: on ? 'var(--color-primary)' : 'transparent',
                       opacity: on ? 1 : 0.45,
                     }}
                   >
-                    <span style={{ fontWeight: 800, fontSize: '13px', color: on ? 'white' : '#1C3F3A' }}>
+                    <span style={{ fontWeight: 800, fontSize: '13px', color: on ? 'white' : 'var(--color-primary)' }}>
                       {step.number}
                     </span>
-                    <span style={{ fontSize: '15px', fontWeight: on ? 600 : 400, color: on ? 'white' : '#0A0C29' }}>
+                    <span style={{ fontSize: '15px', fontWeight: on ? 600 : 400, color: on ? 'white' : 'var(--color-dark)' }}>
                       {step.title}
                     </span>
                   </button>
@@ -581,11 +581,11 @@ function HowItWorks() {
           {/* ── MOBILE right panel — progress line + cards ── */}
           <div className="lg:hidden" style={{ position: 'relative' }}>
             {/* Track line */}
-            <div style={{ position: 'absolute', left: '7px', top: '8px', bottom: '8px', width: '2px', background: '#e5e7eb', borderRadius: '9999px', zIndex: 0 }} />
+            <div style={{ position: 'absolute', left: '7px', top: '8px', bottom: '8px', width: '2px', background: 'var(--color-border)', borderRadius: '9999px', zIndex: 0 }} />
             {/* Active fill */}
             <div style={{
               position: 'absolute', left: '7px', top: '8px', width: '2px', borderRadius: '9999px',
-              background: 'linear-gradient(to bottom, #1C3F3A, #5aab85)',
+              background: 'linear-gradient(to bottom, var(--color-primary), #5aab85)',
               boxShadow: '0 0 8px rgba(28,63,58,0.7), 0 0 16px rgba(28,63,58,0.3)',
               height: `${steps.length > 1 ? (active / (steps.length - 1)) * 100 : 0}%`,
               transition: 'height 0.6s cubic-bezier(0.22,1,0.36,1)', zIndex: 0
@@ -598,7 +598,7 @@ function HowItWorks() {
                 <div style={{
                   position: 'absolute', left: '0px', top: '20px',
                   width: '16px', height: '16px', borderRadius: '9999px',
-                  background: i <= active ? '#1C3F3A' : '#e5e7eb',
+                  background: i <= active ? 'var(--color-primary)' : 'var(--color-border)',
                   boxShadow: i === active ? '0 0 0 4px rgba(28,63,58,0.15), 0 0 14px rgba(28,63,58,0.6)' : 'none',
                   transition: 'all 0.5s ease', zIndex: 2, flexShrink: 0
                 }} />
@@ -606,12 +606,12 @@ function HowItWorks() {
                 <div style={{ flex: 1 }}>
                   <div style={{ position: 'relative', borderRadius: '16px', overflow: 'hidden', opacity: i === active ? 1 : 0.4, transition: 'opacity 0.5s ease' }}>
                     <img src={step.img} alt={step.title} style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block' }} onError={e => { e.target.style.display = 'none' }} />
-                    <div style={{ position: 'absolute', top: '12px', left: '12px', background: '#1C3F3A', color: 'white', width: '36px', height: '36px', borderRadius: '9999px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', fontWeight: 800 }}>
+                    <div style={{ position: 'absolute', top: '12px', left: '12px', background: 'var(--color-primary)', color: 'white', width: '36px', height: '36px', borderRadius: '9999px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', fontWeight: 800 }}>
                       {step.number}
                     </div>
                   </div>
-                  <h3 style={{ fontSize: '20px', fontWeight: 700, color: '#0A0C29', marginTop: '16px', opacity: i === active ? 1 : 0.4, transition: 'opacity 0.5s ease' }}>{step.title}</h3>
-                  <p style={{ fontSize: '15px', color: '#6b7280', marginTop: '8px', lineHeight: 1.7, opacity: i === active ? 1 : 0.4, transition: 'opacity 0.5s ease' }}>{step.desc}</p>
+                  <h3 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--color-dark)', marginTop: '16px', opacity: i === active ? 1 : 0.4, transition: 'opacity 0.5s ease' }}>{step.title}</h3>
+                  <p style={{ fontSize: '15px', color: 'var(--color-muted)', marginTop: '8px', lineHeight: 1.7, opacity: i === active ? 1 : 0.4, transition: 'opacity 0.5s ease' }}>{step.desc}</p>
                 </div>
               </div>
             ))}
@@ -628,12 +628,12 @@ function HowItWorks() {
               >
                 <div className="relative overflow-hidden aspect-video" style={{ borderRadius: '20px' }}>
                   <img src={step.img} alt={step.title} className="w-full h-full object-cover" onError={e => { e.target.style.display = 'none' }} />
-                  <div className="absolute top-4 left-4 w-12 h-12 rounded-full bg-[#1C3F3A] text-white flex items-center justify-center" style={{ fontWeight: 700, fontSize: '18px' }}>
+                  <div className="absolute top-4 left-4 w-12 h-12 rounded-full bg-[var(--color-primary)] text-white flex items-center justify-center" style={{ fontWeight: 700, fontSize: '18px' }}>
                     {step.number}
                   </div>
                 </div>
-                <h3 className="text-[#0A0C29] mt-6" style={{ fontWeight: 700, fontSize: '28px' }}>{step.title}</h3>
-                <p className="text-[#6b7280] mt-3" style={{ fontWeight: 400, fontSize: '16px', lineHeight: 1.8 }}>{step.desc}</p>
+                <h3 className="text-[var(--color-dark)] mt-6" style={{ fontWeight: 700, fontSize: '28px' }}>{step.title}</h3>
+                <p className="text-[var(--color-muted)] mt-3" style={{ fontWeight: 400, fontSize: '16px', lineHeight: 1.8 }}>{step.desc}</p>
               </div>
             ))}
           </div>
@@ -730,7 +730,7 @@ function Projects() {
   const projects = businessConfig.projects
 
   return (
-    <section className="bg-[#E9EAE8] py-28 overflow-hidden">
+    <section className="bg-[var(--color-lightGray)] py-28 overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
@@ -738,11 +738,11 @@ function Projects() {
           <div>
             <p className="section-label mb-3">Our Work</p>
             <h2 style={{ lineHeight: 1.08, letterSpacing: '-0.02em' }}>
-              <span style={{ display: 'block', fontWeight: 300, fontSize: 'clamp(36px, 4vw, 56px)', color: '#0A0C29' }}>Spaces we&apos;ve</span>
-              <span style={{ display: 'block', fontWeight: 800, fontStyle: 'italic', fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(36px, 4vw, 56px)', color: '#1C3F3A' }}>transformed.</span>
+              <span style={{ display: 'block', fontWeight: 300, fontSize: 'clamp(36px, 4vw, 56px)', color: 'var(--color-dark)' }}>Spaces we&apos;ve</span>
+              <span style={{ display: 'block', fontWeight: 800, fontStyle: 'italic', fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(36px, 4vw, 56px)', color: 'var(--color-primary)' }}>transformed.</span>
             </h2>
           </div>
-          <Link to="/gallery" className="text-[#1C3F3A] whitespace-nowrap hover:underline" style={{ fontWeight: 500, fontSize: '14px' }}>
+          <Link to="/gallery" className="text-[var(--color-primary)] whitespace-nowrap hover:underline" style={{ fontWeight: 500, fontSize: '14px' }}>
             View all work →
           </Link>
         </motion.div>
@@ -757,7 +757,7 @@ function Projects() {
           {/* Row 2 — 40/60 inverted, 340px tall */}
           <div className="grid gap-4 mt-4" style={{ gridTemplateColumns: '2fr 3fr', height: '340px' }}>
             <ProjectCard p={projects[2]} fadeDelay={0.16} />
-            <ProjectCard p={projects[3]} fadeDelay={0.24} hoverShadow="0 0 0 2px #1C3F3A" />
+            <ProjectCard p={projects[3]} fadeDelay={0.24} hoverShadow="0 0 0 2px var(--color-primary)" />
           </div>
         </div>
 
@@ -775,9 +775,9 @@ function Projects() {
           <Link
             to="/gallery"
             className="inline-flex items-center px-10 py-4 rounded-full"
-            style={{ background: 'white', border: '2px solid #1C3F3A', color: '#1C3F3A', fontSize: '15px', fontWeight: 600, transition: 'all 0.25s ease' }}
-            onMouseEnter={e => { e.currentTarget.style.background = '#1C3F3A'; e.currentTarget.style.color = 'white' }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'white'; e.currentTarget.style.color = '#1C3F3A' }}
+            style={{ background: 'white', border: '2px solid var(--color-primary)', color: 'var(--color-primary)', fontSize: '15px', fontWeight: 600, transition: 'all 0.25s ease' }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'var(--color-primary)'; e.currentTarget.style.color = 'white' }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'white'; e.currentTarget.style.color = 'var(--color-primary)' }}
           >
             View All Work
           </Link>
@@ -797,8 +797,8 @@ function Testimonials() {
         <motion.div {...fadeUp} className="mb-14">
           <p className="section-label mb-3">Client Stories</p>
           <h2 style={{ fontSize: 'clamp(32px, 4vw, 48px)', letterSpacing: '-0.02em', lineHeight: 1.08 }}>
-            <span style={{ display: 'block', fontWeight: 300, color: '#0A0C29' }}>Loved by clients</span>
-            <span style={{ display: 'block', fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', color: '#1C3F3A' }}>across {businessConfig.location.split(',')[0]}.</span>
+            <span style={{ display: 'block', fontWeight: 300, color: 'var(--color-dark)' }}>Loved by clients</span>
+            <span style={{ display: 'block', fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', color: 'var(--color-primary)' }}>across {businessConfig.location.split(',')[0]}.</span>
           </h2>
         </motion.div>
 
@@ -808,20 +808,20 @@ function Testimonials() {
               key={t.name}
               {...fadeUp}
               transition={{ ...fadeUp.transition, delay: i * 0.08 }}
-              className="bg-[#EBEBE6] p-8"
-              style={{ borderRadius: '20px', boxShadow: '4px 4px 0px #1C3F3A', transition: 'transform 0.2s, box-shadow 0.2s' }}
-              onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-2px,-2px)'; e.currentTarget.style.boxShadow = '6px 6px 0px #1C3F3A' }}
-              onMouseLeave={e => { e.currentTarget.style.transform = 'translate(0,0)'; e.currentTarget.style.boxShadow = '4px 4px 0px #1C3F3A' }}
+              className="bg-[var(--color-cream)] p-8"
+              style={{ borderRadius: '20px', boxShadow: '4px 4px 0px var(--color-primary)', transition: 'transform 0.2s, box-shadow 0.2s' }}
+              onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-2px,-2px)'; e.currentTarget.style.boxShadow = '6px 6px 0px var(--color-primary)' }}
+              onMouseLeave={e => { e.currentTarget.style.transform = 'translate(0,0)'; e.currentTarget.style.boxShadow = '4px 4px 0px var(--color-primary)' }}
             >
-              <div className="text-[#1C3F3A] mb-4" style={{ fontSize: '15px' }}>★★★★★</div>
-              <p className="text-[#0A0C29]" style={{ fontWeight: 400, fontSize: '16px', lineHeight: 1.75 }}>&ldquo;{t.text}&rdquo;</p>
+              <div className="text-[var(--color-primary)] mb-4" style={{ fontSize: '15px' }}>★★★★★</div>
+              <p className="text-[var(--color-dark)]" style={{ fontWeight: 400, fontSize: '16px', lineHeight: 1.75 }}>&ldquo;{t.text}&rdquo;</p>
               <div className="flex items-center gap-3 mt-6">
-                <div className="w-11 h-11 rounded-full bg-[#1C3F3A] text-white flex items-center justify-center" style={{ fontWeight: 600, fontSize: '14px' }}>
+                <div className="w-11 h-11 rounded-full bg-[var(--color-primary)] text-white flex items-center justify-center" style={{ fontWeight: 600, fontSize: '14px' }}>
                   {initials(t.name)}
                 </div>
                 <div>
-                  <div className="text-[#0A0C29]" style={{ fontWeight: 600, fontSize: '15px' }}>{t.name}</div>
-                  <div className="text-[#6b7280]" style={{ fontWeight: 400, fontSize: '13px' }}>{t.location}</div>
+                  <div className="text-[var(--color-dark)]" style={{ fontWeight: 600, fontSize: '15px' }}>{t.name}</div>
+                  <div className="text-[var(--color-muted)]" style={{ fontWeight: 400, fontSize: '13px' }}>{t.location}</div>
                 </div>
               </div>
             </motion.div>
@@ -832,9 +832,9 @@ function Testimonials() {
           <Link
             to="/testimonials"
             className="inline-flex items-center px-10 py-4 rounded-full"
-            style={{ background: 'white', border: '2px solid #1C3F3A', color: '#1C3F3A', fontSize: '15px', fontWeight: 600, transition: 'all 0.25s ease' }}
-            onMouseEnter={e => { e.currentTarget.style.background = '#1C3F3A'; e.currentTarget.style.color = 'white' }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'white'; e.currentTarget.style.color = '#1C3F3A' }}
+            style={{ background: 'white', border: '2px solid var(--color-primary)', color: 'var(--color-primary)', fontSize: '15px', fontWeight: 600, transition: 'all 0.25s ease' }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'var(--color-primary)'; e.currentTarget.style.color = 'white' }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'white'; e.currentTarget.style.color = 'var(--color-primary)' }}
           >
             Read all reviews →
           </Link>

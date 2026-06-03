@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 import { businessConfig } from '../businessConfig'
 
 const socials = [
@@ -49,9 +49,9 @@ export default function TeamGrid() {
               key={member.name}
               variants={item}
               whileHover={{ y: -5 }}
-              className="bg-white rounded-2xl border border-[#E9EAE8] p-8 text-center"
+              className="bg-white rounded-2xl border border-[var(--color-lightGray)] p-8 text-center"
             >
-              <div className="w-20 h-20 rounded-full bg-[#1C3F3A] text-white flex items-center justify-center mx-auto mb-5">
+              <div className="w-20 h-20 rounded-full bg-[var(--color-primary)] text-white flex items-center justify-center mx-auto mb-5">
                 {member.image ? (
                   <img src={member.image} alt={member.name} className="w-full h-full object-cover rounded-full" />
                 ) : (
@@ -66,7 +66,7 @@ export default function TeamGrid() {
                   <a
                     key={so.icon}
                     href={so.href}
-                    className="w-9 h-9 flex items-center justify-center rounded-full border border-[#E9EAE8] text-muted hover:bg-[#1C3F3A] hover:text-white hover:border-[#1C3F3A] transition-colors"
+                    className="w-9 h-9 flex items-center justify-center rounded-full border border-[var(--color-lightGray)] text-muted hover:bg-[var(--color-primary)] hover:text-white hover:border-[var(--color-primary)] transition-colors"
                   >
                     <i className={so.icon} />
                   </a>

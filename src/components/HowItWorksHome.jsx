@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+﻿import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { businessConfig } from '../businessConfig'
 
@@ -35,13 +35,13 @@ export default function HowItWorksHome() {
           {/* Sticky left */}
           <div className="lg:sticky lg:top-28 h-fit self-start">
             <p className="section-label mb-3">How It Works</p>
-            <h2 className="font-extrabold text-[#0A0C29] mb-5" style={{ fontSize: 'clamp(32px, 4vw, 42px)', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
+            <h2 className="font-extrabold text-[var(--color-dark)] mb-5" style={{ fontSize: 'clamp(32px, 4vw, 42px)', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
               Our cleaning process
             </h2>
-            <p className="text-[#6b7280] max-w-sm" style={{ fontSize: '16px', lineHeight: 1.8 }}>
+            <p className="text-[var(--color-muted)] max-w-sm" style={{ fontSize: '16px', lineHeight: 1.8 }}>
               Booking a clean takes minutes. Here&apos;s exactly what happens from the moment you reach out.
             </p>
-            <Link to={businessConfig.ctaPrimary.link} className="mt-8 inline-flex items-center px-8 py-3 rounded-full bg-[#1C3F3A] text-white font-semibold">
+            <Link to={businessConfig.ctaPrimary.link} className="mt-8 inline-flex items-center px-8 py-3 rounded-full bg-[var(--color-primary)] text-white font-semibold">
               {businessConfig.ctaPrimary.label}
             </Link>
 
@@ -54,7 +54,7 @@ export default function HowItWorksHome() {
                     key={step.number}
                     onClick={() => scrollToStep(i)}
                     className={`w-full flex items-center gap-4 p-4 rounded-xl text-left transition-all duration-300 ${
-                      active ? 'bg-[#1C3F3A] text-white' : 'text-[#0A0C29]/40 hover:text-[#0A0C29]/70'
+                      active ? 'bg-[var(--color-primary)] text-white' : 'text-[var(--color-dark)]/40 hover:text-[var(--color-dark)]/70'
                     }`}
                   >
                     <span className="font-extrabold">{step.number}</span>
@@ -76,12 +76,12 @@ export default function HowItWorksHome() {
               >
                 <div className="relative rounded-2xl overflow-hidden aspect-video">
                   <img src={step.img} alt={step.title} className="w-full h-full object-cover" onError={e => { e.target.style.display = 'none' }} />
-                  <div className="absolute top-4 left-4 w-12 h-12 rounded-full bg-[#1C3F3A] text-white flex items-center justify-center font-bold" style={{ fontSize: '18px' }}>
+                  <div className="absolute top-4 left-4 w-12 h-12 rounded-full bg-[var(--color-primary)] text-white flex items-center justify-center font-bold" style={{ fontSize: '18px' }}>
                     {step.number}
                   </div>
                 </div>
-                <h3 className="font-bold text-[#0A0C29] mt-6" style={{ fontSize: '28px' }}>{step.title}</h3>
-                <p className="text-[#6b7280] mt-3" style={{ fontSize: '16px', lineHeight: 1.8 }}>{step.desc}</p>
+                <h3 className="font-bold text-[var(--color-dark)] mt-6" style={{ fontSize: '28px' }}>{step.title}</h3>
+                <p className="text-[var(--color-muted)] mt-3" style={{ fontSize: '16px', lineHeight: 1.8 }}>{step.desc}</p>
               </div>
             ))}
           </div>

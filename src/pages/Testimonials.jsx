@@ -1,5 +1,4 @@
-import { useRef } from 'react'
-import { Link } from 'react-router-dom'
+﻿import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { businessConfig } from '../businessConfig'
 import { StaggerTestimonials } from '../components/ui/stagger-testimonials'
@@ -22,7 +21,7 @@ function InitialsAvatar({ name, size = 44 }) {
   return (
     <div style={{
       width: size, height: size, borderRadius: '50%',
-      background: '#1C3F3A',
+      background: 'var(--color-primary)',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       flexShrink: 0,
     }}>
@@ -37,7 +36,7 @@ function StarRow({ rating = 5, size = 18 }) {
   return (
     <div style={{ display: 'flex', gap: '2px' }}>
       {[1, 2, 3, 4, 5].map(i => (
-        <span key={i} style={{ fontSize: size, color: i <= Math.round(rating) ? '#1C3F3A' : '#d1d5db', lineHeight: 1 }}>★</span>
+        <span key={i} style={{ fontSize: size, color: i <= Math.round(rating) ? 'var(--color-primary)' : '#d1d5db', lineHeight: 1 }}>★</span>
       ))}
     </div>
   )
@@ -47,7 +46,7 @@ function StarRow({ rating = 5, size = 18 }) {
 function Hero() {
   return (
     <section
-      style={{ background: '#1C3F3A', minHeight: '60vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}
+      style={{ background: 'var(--color-primary)', minHeight: '60vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}
       className="pt-[120px] pb-12 px-6 lg:pt-[160px] lg:pb-20 lg:px-20"
     >
       <div style={{ position: 'absolute', top: '-80px', right: '-80px', width: '420px', height: '420px', borderRadius: '9999px', background: 'rgba(255,255,255,0.03)', pointerEvents: 'none' }} />
@@ -66,7 +65,7 @@ function Hero() {
           </span>
         </h1>
         <p style={{ fontSize: '17px', fontWeight: 400, color: 'rgba(255,255,255,0.65)', maxWidth: '520px', lineHeight: 1.75, marginTop: '20px', marginBottom: '28px' }}>
-          Real reviews from real clients across Hyderabad who never have to think about cleaning anymore.
+          Real reviews from real clients across {businessConfig.city} who trust {businessConfig.name} with their space.
         </p>
       </div>
     </section>
@@ -83,13 +82,13 @@ function RatingSummary() {
   const charDelays  = [0.1, 0.25, 0.4]
 
   return (
-    <section style={{ background: '#ffffff', padding: '80px 0' }}>
+    <section style={{ background: 'var(--color-white)', padding: '80px 0' }}>
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div
           ref={ref}
           style={{
             maxWidth: '560px', margin: '0 auto',
-            background: '#EBEBE6', borderRadius: '24px',
+            background: 'var(--color-cream)', borderRadius: '24px',
             padding: '48px', textAlign: 'center',
           }}
         >
@@ -101,7 +100,7 @@ function RatingSummary() {
                 initial={{ scale: 0, opacity: 0 }}
                 animate={inView ? { scale: 1, opacity: 1 } : {}}
                 transition={{ type: 'spring', stiffness: 300, damping: 20, delay: 0.2 + (i - 1) * 0.08 }}
-                style={{ display: 'inline-block', fontSize: '32px', color: '#1C3F3A' }}
+                style={{ display: 'inline-block', fontSize: '32px', color: 'var(--color-primary)' }}
               >
                 ★
               </motion.span>
@@ -109,7 +108,7 @@ function RatingSummary() {
           </div>
 
           {/* Slot machine ticker — each char falls down into place */}
-          <div style={{ fontWeight: 800, fontSize: '80px', color: '#0A0C29', lineHeight: 1, fontFamily: 'Inter, sans-serif', display: 'flex', justifyContent: 'center', alignItems: 'baseline' }}>
+          <div style={{ fontWeight: 800, fontSize: '80px', color: 'var(--color-dark)', lineHeight: 1, fontFamily: 'Inter, sans-serif', display: 'flex', justifyContent: 'center', alignItems: 'baseline' }}>
             {chars.map((char, i) => (
               <div key={i} style={{ overflow: 'hidden', display: 'inline-block' }}>
                 <motion.span
@@ -129,7 +128,7 @@ function RatingSummary() {
             initial={{ opacity: 0, y: 12 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, ease, delay: 0.7 }}
-            style={{ fontWeight: 500, fontSize: '18px', color: '#0A0C29', marginTop: '12px', marginBottom: 0 }}
+            style={{ fontWeight: 500, fontSize: '18px', color: 'var(--color-dark)', marginTop: '12px', marginBottom: 0 }}
           >
             Rated {ratingValue} out of 5 by {reviewCount.num}{reviewCount.suffix} happy clients
           </motion.p>
@@ -137,9 +136,9 @@ function RatingSummary() {
             initial={{ opacity: 0, y: 12 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, ease, delay: 0.8 }}
-            style={{ fontWeight: 400, fontSize: '15px', color: '#6b7280', marginTop: '8px', marginBottom: 0 }}
+            style={{ fontWeight: 400, fontSize: '15px', color: 'var(--color-muted)', marginTop: '8px', marginBottom: 0 }}
           >
-            Across Hyderabad, Telangana, families and businesses trust {businessConfig.name}.
+            Across {businessConfig.location}, families and businesses trust {businessConfig.name}.
           </motion.p>
 
           {/* Verified badge */}
@@ -151,7 +150,7 @@ function RatingSummary() {
           >
             <span style={{
               display: 'inline-block',
-              background: '#1C3F3A', color: 'white',
+              background: 'var(--color-primary)', color: 'white',
               padding: '10px 24px', borderRadius: '9999px',
               fontWeight: 600, fontSize: '14px',
               fontFamily: 'Inter, sans-serif',
@@ -168,18 +167,18 @@ function RatingSummary() {
 /* ─── SECTION 3 — RETRO CAROUSEL ─── */
 function CarouselSection() {
   return (
-    <section style={{ background: '#E9EAE8', padding: '112px 0' }}>
+    <section style={{ background: 'var(--color-lightGray)', padding: '112px 0' }}>
       {/* Heading stays constrained */}
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <motion.div {...fadeUp} style={{ marginBottom: '56px' }}>
-          <p style={{ fontWeight: 600, fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#1C3F3A', marginBottom: '16px' }}>
+          <p style={{ fontWeight: 600, fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--color-primary)', marginBottom: '16px' }}>
             Client Stories
           </p>
           <h2 style={{ margin: 0, letterSpacing: '-0.02em' }}>
-            <span style={{ display: 'block', fontWeight: 300, fontSize: 'clamp(32px,4vw,48px)', color: '#0A0C29', lineHeight: 1.1 }}>
+            <span style={{ display: 'block', fontWeight: 300, fontSize: 'clamp(32px,4vw,48px)', color: 'var(--color-dark)', lineHeight: 1.1 }}>
               What our clients
             </span>
-            <span style={{ display: 'block', fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', fontSize: 'clamp(32px,4vw,48px)', color: '#1C3F3A', lineHeight: 1.1 }}>
+            <span style={{ display: 'block', fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', fontSize: 'clamp(32px,4vw,48px)', color: 'var(--color-primary)', lineHeight: 1.1 }}>
               say about us.
             </span>
           </h2>
@@ -203,18 +202,18 @@ function ReviewGrid() {
   const reviews = businessConfig.testimonials
 
   return (
-    <section style={{ background: '#ffffff', padding: '112px 0' }}>
+    <section style={{ background: 'var(--color-white)', padding: '112px 0' }}>
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <motion.div {...fadeUp} style={{ marginBottom: '56px' }}>
-          <p style={{ fontWeight: 600, fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#1C3F3A', marginBottom: '16px' }}>
+          <p style={{ fontWeight: 600, fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--color-primary)', marginBottom: '16px' }}>
             More Reviews
           </p>
           <h2 style={{ margin: 0, letterSpacing: '-0.02em' }}>
-            <span style={{ display: 'block', fontWeight: 300, fontSize: 'clamp(32px,4vw,48px)', color: '#0A0C29', lineHeight: 1.1 }}>
+            <span style={{ display: 'block', fontWeight: 300, fontSize: 'clamp(32px,4vw,48px)', color: 'var(--color-dark)', lineHeight: 1.1 }}>
               Loved by clients
             </span>
-            <span style={{ display: 'block', fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', fontSize: 'clamp(32px,4vw,48px)', color: '#1C3F3A', lineHeight: 1.1 }}>
-              across Hyderabad.
+            <span style={{ display: 'block', fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', fontSize: 'clamp(32px,4vw,48px)', color: 'var(--color-primary)', lineHeight: 1.1 }}>
+              across {businessConfig.city}.
             </span>
           </h2>
         </motion.div>
@@ -228,33 +227,33 @@ function ReviewGrid() {
               viewport={{ once: true }}
               transition={{ duration: 0.7, ease, delay: i * 0.08 }}
               style={{
-                background: '#EBEBE6',
+                background: 'var(--color-cream)',
                 borderRadius: '20px',
                 padding: '32px',
-                boxShadow: '4px 4px 0px #1C3F3A',
+                boxShadow: '4px 4px 0px var(--color-primary)',
                 transition: 'box-shadow 0.2s ease, transform 0.2s ease',
                 cursor: 'default',
               }}
               onMouseEnter={e => {
                 e.currentTarget.style.transform = 'translate(-2px,-2px)'
-                e.currentTarget.style.boxShadow = '6px 6px 0px #1C3F3A'
+                e.currentTarget.style.boxShadow = '6px 6px 0px var(--color-primary)'
               }}
               onMouseLeave={e => {
                 e.currentTarget.style.transform = 'translate(0,0)'
-                e.currentTarget.style.boxShadow = '4px 4px 0px #1C3F3A'
+                e.currentTarget.style.boxShadow = '4px 4px 0px var(--color-primary)'
               }}
             >
               <StarRow rating={r.rating} size={18} />
 
-              <p style={{ fontSize: '16px', fontWeight: 400, color: '#0A0C29', lineHeight: 1.75, marginTop: '16px', marginBottom: 0 }}>
+              <p style={{ fontSize: '16px', fontWeight: 400, color: 'var(--color-dark)', lineHeight: 1.75, marginTop: '16px', marginBottom: 0 }}>
                 &ldquo;{r.text}&rdquo;
               </p>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginTop: '24px' }}>
                 <InitialsAvatar name={r.name} size={44} />
                 <div>
-                  <p style={{ margin: 0, fontWeight: 600, fontSize: '15px', color: '#0A0C29' }}>{r.name}</p>
-                  <p style={{ margin: 0, fontWeight: 400, fontSize: '13px', color: '#6b7280' }}>{r.location}</p>
+                  <p style={{ margin: 0, fontWeight: 600, fontSize: '15px', color: 'var(--color-dark)' }}>{r.name}</p>
+                  <p style={{ margin: 0, fontWeight: 400, fontSize: '13px', color: 'var(--color-muted)' }}>{r.location}</p>
                 </div>
               </div>
             </motion.div>
@@ -268,13 +267,13 @@ function ReviewGrid() {
             rel="noopener noreferrer"
             style={{
               display: 'inline-block', padding: '12px 32px',
-              border: '2px solid #1C3F3A', color: '#1C3F3A',
+              border: '2px solid var(--color-primary)', color: 'var(--color-primary)',
               borderRadius: '9999px', fontWeight: 600, fontSize: '15px',
               textDecoration: 'none', transition: 'all 0.2s ease',
               fontFamily: 'Inter, sans-serif',
             }}
-            onMouseEnter={e => { e.currentTarget.style.background = '#1C3F3A'; e.currentTarget.style.color = 'white' }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#1C3F3A' }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'var(--color-primary)'; e.currentTarget.style.color = 'white' }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--color-primary)' }}
           >
             Read all reviews →
           </a>
@@ -289,17 +288,17 @@ function VideoTestimonials() {
   const videos = businessConfig.testimonialVideos
 
   return (
-    <section style={{ background: '#E9EAE8', padding: '96px 0' }}>
+    <section style={{ background: 'var(--color-lightGray)', padding: '96px 0' }}>
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <motion.div {...fadeUp} style={{ marginBottom: '48px' }}>
-          <p style={{ fontWeight: 600, fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#1C3F3A', marginBottom: '16px' }}>
+          <p style={{ fontWeight: 600, fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--color-primary)', marginBottom: '16px' }}>
             In Their Words
           </p>
           <h2 style={{ margin: 0, letterSpacing: '-0.02em' }}>
-            <span style={{ display: 'block', fontWeight: 300, fontSize: 'clamp(32px,4vw,44px)', color: '#0A0C29', lineHeight: 1.1 }}>
+            <span style={{ display: 'block', fontWeight: 300, fontSize: 'clamp(32px,4vw,44px)', color: 'var(--color-dark)', lineHeight: 1.1 }}>
               Video
             </span>
-            <span style={{ display: 'block', fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', fontSize: 'clamp(32px,4vw,44px)', color: '#1C3F3A', lineHeight: 1.1 }}>
+            <span style={{ display: 'block', fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', fontSize: 'clamp(32px,4vw,44px)', color: 'var(--color-primary)', lineHeight: 1.1 }}>
               testimonials.
             </span>
           </h2>
@@ -330,13 +329,13 @@ function VideoTestimonials() {
                 }}>
                   <div style={{
                     width: '64px', height: '64px', borderRadius: '50%',
-                    background: '#1C3F3A',
+                    background: 'var(--color-primary)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     fontSize: '24px', color: 'white',
                   }}>
                     ▶
                   </div>
-                  <p style={{ fontSize: '14px', fontWeight: 500, color: '#6b7280', marginTop: '16px', marginBottom: 0 }}>
+                  <p style={{ fontSize: '14px', fontWeight: 500, color: 'var(--color-muted)', marginTop: '16px', marginBottom: 0 }}>
                     Client testimonial coming soon
                   </p>
                 </div>

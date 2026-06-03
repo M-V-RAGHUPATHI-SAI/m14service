@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const ease = [0.22, 1, 0.36, 1]
@@ -11,7 +11,7 @@ function InitialsAvatar({ name, size = 90 }) {
   return (
     <div style={{
       width: size, height: size, borderRadius: '50%',
-      background: '#1C3F3A', border: '3px solid rgba(28,63,58,0.4)',
+      background: 'var(--color-primary)', border: '3px solid rgba(28,63,58,0.4)',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       flexShrink: 0,
     }}>
@@ -26,7 +26,7 @@ function Stars({ rating, size = 18 }) {
   return (
     <div style={{ display: 'flex', gap: '2px' }}>
       {[1, 2, 3, 4, 5].map(i => (
-        <span key={i} style={{ fontSize: size, color: i <= Math.round(rating) ? '#1C3F3A' : '#d1d5db', lineHeight: 1 }}>★</span>
+        <span key={i} style={{ fontSize: size, color: i <= Math.round(rating) ? 'var(--color-primary)' : '#d1d5db', lineHeight: 1 }}>★</span>
       ))}
     </div>
   )
@@ -41,20 +41,20 @@ function Card({ t, onExpand }) {
         onClick={() => onExpand(t)}
         style={{
           height: '480px',
-          background: 'linear-gradient(135deg, #EBEBE6 0%, #f7f5f0 100%)',
+          background: 'linear-gradient(135deg, var(--color-cream) 0%, #f7f5f0 100%)',
           borderRadius: '20px',
           padding: '36px 28px',
           cursor: 'pointer',
           display: 'flex',
           flexDirection: 'column',
-          boxShadow: '4px 4px 0px #1C3F3A',
+          boxShadow: '4px 4px 0px var(--color-primary)',
         }}
       >
         {/* Quote mark */}
-        <div style={{ fontSize: '52px', color: '#1C3F3A', lineHeight: 0.8, fontFamily: 'Georgia, serif', opacity: 0.6, marginBottom: '20px' }}>&ldquo;</div>
+        <div style={{ fontSize: '52px', color: 'var(--color-primary)', lineHeight: 0.8, fontFamily: 'Georgia, serif', opacity: 0.6, marginBottom: '20px' }}>&ldquo;</div>
 
         {/* Review text */}
-        <p style={{ flex: 1, fontSize: '15px', fontWeight: 400, color: '#0A0C29', lineHeight: 1.8, margin: 0, overflow: 'hidden' }}>
+        <p style={{ flex: 1, fontSize: '15px', fontWeight: 400, color: 'var(--color-dark)', lineHeight: 1.8, margin: 0, overflow: 'hidden' }}>
           {t.text}
         </p>
 
@@ -70,10 +70,10 @@ function Card({ t, onExpand }) {
         <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
           <InitialsAvatar name={t.name} size={52} />
           <div>
-            <p style={{ margin: 0, fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', fontSize: '16px', color: '#0A0C29' }}>
+            <p style={{ margin: 0, fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', fontSize: '16px', color: 'var(--color-dark)' }}>
               {t.name}
             </p>
-            <p style={{ margin: 0, fontSize: '12px', fontWeight: 400, fontStyle: 'italic', color: '#1C3F3A', textDecoration: 'underline', marginTop: '2px' }}>
+            <p style={{ margin: 0, fontSize: '12px', fontWeight: 400, fontStyle: 'italic', color: 'var(--color-primary)', textDecoration: 'underline', marginTop: '2px' }}>
               {t.designation || t.location}
             </p>
           </div>
@@ -136,14 +136,14 @@ export default function RetroTestimonialCarousel({ testimonials }) {
           aria-label="Previous"
           style={{
             width: '44px', height: '44px', borderRadius: '50%',
-            background: '#1C3F3A', border: 'none',
+            background: 'var(--color-primary)', border: 'none',
             cursor: canPrev ? 'pointer' : 'default',
             opacity: canPrev ? 1 : 0.4,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             color: 'white', fontSize: '18px', transition: 'opacity 0.2s, background 0.2s',
           }}
-          onMouseEnter={e => { if (canPrev) e.currentTarget.style.background = '#142e2a' }}
-          onMouseLeave={e => { e.currentTarget.style.background = '#1C3F3A' }}
+          onMouseEnter={e => { if (canPrev) e.currentTarget.style.background = 'var(--color-primaryDark)' }}
+          onMouseLeave={e => { e.currentTarget.style.background = 'var(--color-primary)' }}
         >
           ←
         </button>
@@ -153,14 +153,14 @@ export default function RetroTestimonialCarousel({ testimonials }) {
           aria-label="Next"
           style={{
             width: '44px', height: '44px', borderRadius: '50%',
-            background: '#1C3F3A', border: 'none',
+            background: 'var(--color-primary)', border: 'none',
             cursor: canNext ? 'pointer' : 'default',
             opacity: canNext ? 1 : 0.4,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             color: 'white', fontSize: '18px', transition: 'opacity 0.2s, background 0.2s',
           }}
-          onMouseEnter={e => { if (canNext) e.currentTarget.style.background = '#142e2a' }}
-          onMouseLeave={e => { e.currentTarget.style.background = '#1C3F3A' }}
+          onMouseEnter={e => { if (canNext) e.currentTarget.style.background = 'var(--color-primaryDark)' }}
+          onMouseLeave={e => { e.currentTarget.style.background = 'var(--color-primary)' }}
         >
           →
         </button>
@@ -192,7 +192,7 @@ export default function RetroTestimonialCarousel({ testimonials }) {
               transition={{ duration: 0.35, ease }}
               onClick={e => e.stopPropagation()}
               style={{
-                background: 'linear-gradient(135deg, #EBEBE6 0%, #ffffff 100%)',
+                background: 'linear-gradient(135deg, var(--color-cream) 0%, var(--color-white) 100%)',
                 borderRadius: '24px',
                 padding: '48px',
                 maxWidth: '560px',
@@ -207,16 +207,16 @@ export default function RetroTestimonialCarousel({ testimonials }) {
                 style={{
                   position: 'absolute', top: '20px', right: '20px',
                   background: 'none', border: 'none', fontSize: '24px',
-                  cursor: 'pointer', color: '#6b7280', lineHeight: 1,
+                  cursor: 'pointer', color: 'var(--color-muted)', lineHeight: 1,
                   padding: '4px 8px',
                 }}
               >
                 ×
               </button>
 
-              <div style={{ fontSize: '56px', color: '#1C3F3A', lineHeight: 0.8, fontFamily: 'Georgia, serif', opacity: 0.6, marginBottom: '24px' }}>&ldquo;</div>
+              <div style={{ fontSize: '56px', color: 'var(--color-primary)', lineHeight: 0.8, fontFamily: 'Georgia, serif', opacity: 0.6, marginBottom: '24px' }}>&ldquo;</div>
 
-              <p style={{ fontSize: '18px', fontWeight: 400, color: '#0A0C29', lineHeight: 1.8, margin: '0 0 28px' }}>
+              <p style={{ fontSize: '18px', fontWeight: 400, color: 'var(--color-dark)', lineHeight: 1.8, margin: '0 0 28px' }}>
                 {expanded.text}
               </p>
 
@@ -225,10 +225,10 @@ export default function RetroTestimonialCarousel({ testimonials }) {
               <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginTop: '28px', paddingTop: '24px', borderTop: '1px solid rgba(28,63,58,0.15)' }}>
                 <InitialsAvatar name={expanded.name} size={64} />
                 <div>
-                  <p style={{ margin: 0, fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', fontSize: '20px', color: '#0A0C29' }}>
+                  <p style={{ margin: 0, fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', fontSize: '20px', color: 'var(--color-dark)' }}>
                     {expanded.name}
                   </p>
-                  <p style={{ margin: 0, fontSize: '14px', fontWeight: 400, fontStyle: 'italic', color: '#1C3F3A', textDecoration: 'underline', marginTop: '4px' }}>
+                  <p style={{ margin: 0, fontSize: '14px', fontWeight: 400, fontStyle: 'italic', color: 'var(--color-primary)', textDecoration: 'underline', marginTop: '4px' }}>
                     {expanded.designation || expanded.location}
                   </p>
                 </div>

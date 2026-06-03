@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 import { businessConfig } from '../businessConfig'
 
 function Stars({ count }) {
@@ -54,12 +54,12 @@ export default function ReviewsGrid() {
               key={t.name}
               variants={item}
               whileHover={{ y: -5 }}
-              className="bg-white rounded-2xl border border-[#E9EAE8] p-8 flex flex-col"
+              className="bg-white rounded-2xl border border-[var(--color-lightGray)] p-8 flex flex-col"
             >
               <div className="mb-5"><Stars count={t.rating} /></div>
               <p className="text-text-dark/80 leading-relaxed mb-8 flex-1">&ldquo;{t.text}&rdquo;</p>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-[#1C3F3A] text-white flex items-center justify-center font-bold text-sm">
+                <div className="w-12 h-12 rounded-full bg-[var(--color-primary)] text-white flex items-center justify-center font-bold text-sm">
                   {initials(t.name)}
                 </div>
                 <div>

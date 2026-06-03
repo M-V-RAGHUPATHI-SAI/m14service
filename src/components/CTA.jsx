@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { businessConfig } from '../businessConfig'
 
@@ -7,7 +7,7 @@ export default function CTA({
   subtitle = "Book your first clean today — same-day slots are usually available.",
 }) {
   return (
-    <section className="bg-[#1C3F3A] py-24 relative overflow-hidden">
+    <section className="bg-[var(--color-primary)] py-24 relative overflow-hidden">
       {/* subtle decorations */}
       <motion.div
         animate={{ y: [0, -12, 0] }}
@@ -43,7 +43,7 @@ export default function CTA({
         >
           <Link
             to={businessConfig.ctaPrimary.link}
-            className="bg-white text-[#1C3F3A] px-8 py-4 rounded-full font-bold hover:bg-[#EBEBE6] transition-colors text-center"
+            className="bg-white text-[var(--color-primary)] px-8 py-4 rounded-full font-bold hover:bg-[var(--color-cream)] transition-colors text-center"
           >
             {businessConfig.ctaPrimary.label}
           </Link>

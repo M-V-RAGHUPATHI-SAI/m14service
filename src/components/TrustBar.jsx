@@ -1,10 +1,10 @@
-import { businessConfig } from '../businessConfig'
+﻿import { businessConfig } from '../businessConfig'
 
 export default function TrustBar() {
   const items = [...businessConfig.trustBar, ...businessConfig.trustBar]
 
   return (
-    <section className="bg-[#1C3F3A] overflow-hidden" style={{ height: '52px' }}>
+    <section className="bg-[var(--color-primary)] overflow-hidden" style={{ height: '52px' }}>
       <div className="flex items-center h-full w-max animate-marquee">
         {items.map((item, i) => (
           <div key={i} className="flex items-center flex-shrink-0">

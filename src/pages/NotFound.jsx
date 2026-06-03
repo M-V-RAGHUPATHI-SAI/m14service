@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom'
+﻿import { Link } from 'react-router-dom'
 
 export default function NotFound() {
   return (
     <section
       style={{
-        background: '#1C3F3A',
+        background: 'var(--color-primary)',
         minHeight: '100svh',
         display: 'flex',
         flexDirection: 'column',
@@ -39,7 +39,7 @@ export default function NotFound() {
             display: 'inline-block',
             marginTop: '36px',
             background: 'white',
-            color: '#1C3F3A',
+            color: 'var(--color-primary)',
             fontFamily: 'Inter, sans-serif',
             fontWeight: 700,
             fontSize: '15px',

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 import { businessConfig } from '../businessConfig'
 import Icon from './Icon'
 
@@ -40,9 +40,9 @@ export default function Values() {
               key={v.title}
               variants={item}
               whileHover={{ y: -6 }}
-              className="bg-white rounded-2xl border border-[#E9EAE8] p-8"
+              className="bg-white rounded-2xl border border-[var(--color-lightGray)] p-8"
             >
-              <div className="w-14 h-14 rounded-xl bg-[#1C3F3A] text-white flex items-center justify-center mb-6">
+              <div className="w-14 h-14 rounded-xl bg-[var(--color-primary)] text-white flex items-center justify-center mb-6">
                 <Icon name={v.icon} size={22} />
               </div>
               <h3 className="text-lg font-bold text-text-dark mb-2">{v.title}</h3>

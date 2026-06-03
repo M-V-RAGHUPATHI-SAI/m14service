@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+﻿import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { businessConfig } from '../businessConfig'
@@ -40,7 +40,7 @@ export default function Gallery() {
     <>
       {/* ── HERO ── */}
       <section
-        style={{ background: '#1C3F3A', minHeight: '60vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}
+        style={{ background: 'var(--color-primary)', minHeight: '60vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}
         className="pt-[120px] pb-12 px-6 lg:pt-[160px] lg:pb-20 lg:px-20"
       >
         {/* Decorative circle */}
@@ -60,13 +60,13 @@ export default function Gallery() {
             </span>
           </h1>
           <p style={{ fontSize: '17px', fontWeight: 400, color: 'rgba(255,255,255,0.65)', maxWidth: '520px', lineHeight: 1.75, marginTop: '20px', marginBottom: '28px' }}>
-            A look at the homes, offices and spaces our team has brought back to spotless across Hyderabad.
+            A look at the homes, offices and spaces our team has brought back to spotless across {businessConfig.city}.
           </p>
         </div>
       </section>
 
       {/* ── FILTER + BEFORE/AFTER GRID ── */}
-      <section style={{ background: '#ffffff' }} className="pt-20 pb-20 lg:pt-20">
+      <section style={{ background: 'var(--color-white)' }} className="pt-20 pb-20 lg:pt-20">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
 
           {/* Desktop filter pills — hidden on mobile */}
@@ -79,8 +79,8 @@ export default function Gallery() {
                   onClick={() => setActiveFilter(cat)}
                   className={`px-6 py-2.5 rounded-full text-sm transition-all duration-200 cursor-pointer ${
                     isActive
-                      ? 'bg-[#1C3F3A] text-white border-2 border-[#1C3F3A] font-semibold'
-                      : 'bg-white text-[#0A0C29] border-2 border-[#e5e7eb] hover:border-[#1C3F3A] hover:text-[#1C3F3A] font-medium'
+                      ? 'bg-[var(--color-primary)] text-white border-2 border-[var(--color-primary)] font-semibold'
+                      : 'bg-white text-[var(--color-dark)] border-2 border-[var(--color-border)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] font-medium'
                   }`}
                 >
                   {cat}
@@ -93,13 +93,13 @@ export default function Gallery() {
           <div className="lg:hidden" style={{ marginBottom: '32px', position: 'relative' }} ref={dropdownRef}>
             <button
               onClick={() => setDropdownOpen(o => !o)}
-              style={{ width: '100%', background: 'white', border: '1.5px solid #1C3F3A', borderRadius: '12px', padding: '14px 18px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontWeight: 600, fontSize: '14px', color: '#0A0C29', cursor: 'pointer' }}
+              style={{ width: '100%', background: 'white', border: '1.5px solid var(--color-primary)', borderRadius: '12px', padding: '14px 18px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontWeight: 600, fontSize: '14px', color: 'var(--color-dark)', cursor: 'pointer' }}
             >
               <span>{activeFilter}</span>
               <motion.span
                 animate={{ rotate: dropdownOpen ? 180 : 0 }}
                 transition={{ duration: 0.2 }}
-                style={{ color: '#1C3F3A', fontSize: '16px', lineHeight: 1, display: 'inline-block' }}
+                style={{ color: 'var(--color-primary)', fontSize: '16px', lineHeight: 1, display: 'inline-block' }}
               >
                 ↓
               </motion.span>
@@ -112,7 +112,7 @@ export default function Gallery() {
                   animate={{ height: 'auto', opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.25, ease }}
-                  style={{ overflow: 'hidden', background: 'white', border: '1.5px solid #e5e7eb', borderRadius: '12px', marginTop: '6px', position: 'absolute', width: '100%', zIndex: 20 }}
+                  style={{ overflow: 'hidden', background: 'white', border: '1.5px solid var(--color-border)', borderRadius: '12px', marginTop: '6px', position: 'absolute', width: '100%', zIndex: 20 }}
                 >
                   {CATEGORIES.map((cat, i) => {
                     const isActive = cat === activeFilter
@@ -120,8 +120,8 @@ export default function Gallery() {
                       <button
                         key={cat}
                         onClick={() => { setActiveFilter(cat); setDropdownOpen(false) }}
-                        style={{ display: 'block', width: '100%', padding: '13px 18px', textAlign: 'left', fontWeight: isActive ? 600 : 500, fontSize: '14px', color: isActive ? 'white' : '#0A0C29', background: isActive ? '#1C3F3A' : 'white', border: 'none', borderBottom: i < CATEGORIES.length - 1 ? '1px solid #e5e7eb' : 'none', cursor: 'pointer', transition: 'background 0.15s ease' }}
-                        onMouseEnter={e => { if (!isActive) e.currentTarget.style.background = '#E9EAE8' }}
+                        style={{ display: 'block', width: '100%', padding: '13px 18px', textAlign: 'left', fontWeight: isActive ? 600 : 500, fontSize: '14px', color: isActive ? 'white' : 'var(--color-dark)', background: isActive ? 'var(--color-primary)' : 'white', border: 'none', borderBottom: i < CATEGORIES.length - 1 ? '1px solid var(--color-border)' : 'none', cursor: 'pointer', transition: 'background 0.15s ease' }}
+                        onMouseEnter={e => { if (!isActive) e.currentTarget.style.background = 'var(--color-lightGray)' }}
                         onMouseLeave={e => { if (!isActive) e.currentTarget.style.background = 'white' }}
                       >
                         {cat}
@@ -143,7 +143,7 @@ export default function Gallery() {
               transition={{ duration: 0.25 }}
             >
               {filtered.length === 0 ? (
-                <div style={{ textAlign: 'center', padding: '64px 0', color: '#6b7280', fontSize: '15px' }}>
+                <div style={{ textAlign: 'center', padding: '64px 0', color: 'var(--color-muted)', fontSize: '15px' }}>
                   No projects in this category yet.
                 </div>
               ) : (
@@ -159,12 +159,12 @@ export default function Gallery() {
                       style={{
                         background: 'white',
                         borderRadius: '20px',
-                        boxShadow: '6px 6px 0px #1C3F3A',
+                        boxShadow: '6px 6px 0px var(--color-primary)',
                         overflow: 'hidden',
                         transition: 'box-shadow 0.2s ease',
                       }}
-                      onMouseEnter={e => { e.currentTarget.style.boxShadow = '9px 9px 0px #1C3F3A' }}
-                      onMouseLeave={e => { e.currentTarget.style.boxShadow = '6px 6px 0px #1C3F3A' }}
+                      onMouseEnter={e => { e.currentTarget.style.boxShadow = '9px 9px 0px var(--color-primary)' }}
+                      onMouseLeave={e => { e.currentTarget.style.boxShadow = '6px 6px 0px var(--color-primary)' }}
                     >
                       {/* Image pair */}
                       <div style={{ position: 'relative', display: 'flex' }}>
@@ -175,9 +175,9 @@ export default function Gallery() {
                             alt={`Before — ${pair.title}`}
                             className="ba-img"
                             style={{ width: '100%', objectFit: 'cover', display: 'block' }}
-                            onError={e => { e.target.style.background = '#E9EAE8'; e.target.removeAttribute('src') }}
+                            onError={e => { e.target.style.background = 'var(--color-lightGray)'; e.target.removeAttribute('src') }}
                           />
-                          <span style={{ position: 'absolute', top: '12px', left: '12px', background: '#0A0C29', color: 'white', fontSize: '10px', fontWeight: 600, padding: '4px 10px', borderRadius: '9999px' }}>
+                          <span style={{ position: 'absolute', top: '12px', left: '12px', background: 'var(--color-dark)', color: 'white', fontSize: '10px', fontWeight: 600, padding: '4px 10px', borderRadius: '9999px' }}>
                             Before
                           </span>
                         </div>
@@ -192,9 +192,9 @@ export default function Gallery() {
                             alt={`After — ${pair.title}`}
                             className="ba-img"
                             style={{ width: '100%', objectFit: 'cover', display: 'block' }}
-                            onError={e => { e.target.style.background = '#E9EAE8'; e.target.removeAttribute('src') }}
+                            onError={e => { e.target.style.background = 'var(--color-lightGray)'; e.target.removeAttribute('src') }}
                           />
-                          <span style={{ position: 'absolute', top: '12px', right: '12px', background: '#1C3F3A', color: 'white', fontSize: '10px', fontWeight: 600, padding: '4px 10px', borderRadius: '9999px' }}>
+                          <span style={{ position: 'absolute', top: '12px', right: '12px', background: 'var(--color-primary)', color: 'white', fontSize: '10px', fontWeight: 600, padding: '4px 10px', borderRadius: '9999px' }}>
                             After
                           </span>
                         </div>
@@ -202,11 +202,11 @@ export default function Gallery() {
 
                       {/* Card footer */}
                       <div style={{ padding: '16px 20px' }}>
-                        <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#1C3F3A', background: '#E8F1EE', borderRadius: '9999px', padding: '3px 10px' }}>
+                        <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--color-primary)', background: '#E8F1EE', borderRadius: '9999px', padding: '3px 10px' }}>
                           {pair.category}
                         </span>
-                        <div style={{ fontSize: '16px', fontWeight: 600, color: '#0A0C29', marginTop: '6px' }}>{pair.title}</div>
-                        <div style={{ fontSize: '13px', fontWeight: 400, color: '#6b7280', marginTop: '2px' }}>{pair.description}</div>
+                        <div style={{ fontSize: '16px', fontWeight: 600, color: 'var(--color-dark)', marginTop: '6px' }}>{pair.title}</div>
+                        <div style={{ fontSize: '13px', fontWeight: 400, color: 'var(--color-muted)', marginTop: '2px' }}>{pair.description}</div>
                       </div>
                     </motion.div>
                   ))}
@@ -224,7 +224,7 @@ export default function Gallery() {
           <MotionLink
             to={businessConfig.ctaPrimary.link}
             className="marquee-cta"
-            style={{ display: 'inline-block', padding: '16px 40px', borderRadius: '999px', background: '#1C3F3A', color: 'white', fontWeight: 700, fontSize: '16px', letterSpacing: '0.02em', textDecoration: 'none', boxShadow: '0 4px 24px rgba(0,0,0,0.25)', pointerEvents: 'auto' }}
+            style={{ display: 'inline-block', padding: '16px 40px', borderRadius: '999px', background: 'var(--color-primary)', color: 'white', fontWeight: 700, fontSize: '16px', letterSpacing: '0.02em', textDecoration: 'none', boxShadow: '0 4px 24px rgba(0,0,0,0.25)', pointerEvents: 'auto' }}
             whileHover={{
               scale: 1.12,
               boxShadow: '0 8px 40px rgba(0,0,0,0.35)',
@@ -239,15 +239,15 @@ export default function Gallery() {
       </div>
 
       {/* ── VIDEO SECTION ── */}
-      <section style={{ background: '#E9EAE8', padding: '96px 0' }}>
+      <section style={{ background: 'var(--color-lightGray)', padding: '96px 0' }}>
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <motion.div {...fadeUp} style={{ textAlign: 'center', marginBottom: '48px' }}>
             <p className="section-label" style={{ marginBottom: '12px' }}>SEE IT IN ACTION</p>
             <h2 style={{ margin: 0, letterSpacing: '-0.02em' }}>
-              <span style={{ display: 'block', fontWeight: 300, fontSize: 'clamp(32px, 4vw, 44px)', color: '#0A0C29', lineHeight: 1.1 }}>
-                Watch a PureSpace
+              <span style={{ display: 'block', fontWeight: 300, fontSize: 'clamp(32px, 4vw, 44px)', color: 'var(--color-dark)', lineHeight: 1.1 }}>
+                Watch a {businessConfig.name}
               </span>
-              <span style={{ display: 'block', fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', fontSize: 'clamp(32px, 4vw, 44px)', color: '#1C3F3A', lineHeight: 1.1 }}>
+              <span style={{ display: 'block', fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', fontSize: 'clamp(32px, 4vw, 44px)', color: 'var(--color-primary)', lineHeight: 1.1 }}>
                 clean.
               </span>
             </h2>
@@ -258,7 +258,7 @@ export default function Gallery() {
               <div style={{ borderRadius: '16px', overflow: 'hidden', aspectRatio: '16/9' }}>
                 <iframe
                   src={businessConfig.videoUrl}
-                  title="PureSpace Clean"
+                  title={`${businessConfig.name} Clean`}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   style={{ width: '100%', height: '100%', border: 'none' }}
@@ -266,10 +266,10 @@ export default function Gallery() {
               </div>
             ) : (
               <div style={{ background: '#d1d5db', borderRadius: '16px', aspectRatio: '16/9', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                <div style={{ width: '64px', height: '64px', borderRadius: '9999px', background: '#1C3F3A', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px', color: 'white', marginBottom: '16px' }}>
+                <div style={{ width: '64px', height: '64px', borderRadius: '9999px', background: 'var(--color-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px', color: 'white', marginBottom: '16px' }}>
                   ▶
                 </div>
-                <p style={{ fontSize: '14px', fontWeight: 500, color: '#6b7280', margin: 0 }}>
+                <p style={{ fontSize: '14px', fontWeight: 500, color: 'var(--color-muted)', margin: 0 }}>
                   Add your video URL to businessConfig.js
                 </p>
               </div>

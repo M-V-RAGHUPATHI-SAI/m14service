@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 import { businessConfig } from '../businessConfig'
 
 export default function Story() {
@@ -32,7 +32,7 @@ export default function Story() {
             <p className="text-muted leading-relaxed">{businessConfig.about}</p>
 
             <div className="mt-8 flex items-center gap-3 text-sm text-text-dark">
-              <span className="w-10 h-px bg-[#1C3F3A]" />
+              <span className="w-10 h-px bg-[var(--color-primary)]" />
               <span className="font-semibold">Founded {businessConfig.founded} · {businessConfig.location}</span>
             </div>
           </motion.div>

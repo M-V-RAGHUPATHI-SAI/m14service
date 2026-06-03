@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+﻿import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 import { FaWhatsapp } from 'react-icons/fa'
@@ -17,12 +17,12 @@ const fadeUp = {
 const inputStyle = {
   width: '100%',
   padding: '14px 18px',
-  border: '2px solid #e5e7eb',
+  border: '2px solid var(--color-border)',
   borderRadius: '12px',
   fontFamily: 'Inter, sans-serif',
   fontSize: '15px',
-  color: '#0A0C29',
-  background: '#ffffff',
+  color: 'var(--color-dark)',
+  background: 'var(--color-white)',
   outline: 'none',
   boxSizing: 'border-box',
 }
@@ -32,7 +32,7 @@ function Hero() {
   return (
     <section
       style={{
-        background: '#1C3F3A',
+        background: 'var(--color-primary)',
         minHeight: '60vh',
         display: 'flex',
         flexDirection: 'column',
@@ -74,7 +74,7 @@ function FormAndInfo() {
   const [msg,     setMsg]     = useState('')
 
   const focusStyle = (active) => active
-    ? { borderColor: '#1C3F3A', boxShadow: '0 0 0 3px rgba(28,63,58,0.08)' }
+    ? { borderColor: 'var(--color-primary)', boxShadow: '0 0 0 3px rgba(28,63,58,0.08)' }
     : {}
 
   const [focused, setFocused] = useState({})
@@ -97,24 +97,24 @@ function FormAndInfo() {
                  : _find(/mon|week|fri/i) || _keys[0]
 
   return (
-    <section style={{ background: '#ffffff', padding: '112px 0' }}>
+    <section style={{ background: 'var(--color-white)', padding: '112px 0' }}>
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
 
           {/* ── LEFT: FORM ── */}
           <motion.div {...fadeUp}>
-            <p style={{ fontWeight: 600, fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#1C3F3A', marginBottom: '12px' }}>
+            <p style={{ fontWeight: 600, fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--color-primary)', marginBottom: '12px' }}>
               BOOK A CLEAN
             </p>
             <h2 style={{ margin: 0, letterSpacing: '-0.02em', marginBottom: '12px' }}>
-              <span style={{ display: 'block', fontWeight: 300, fontSize: '36px', color: '#0A0C29', lineHeight: 1.1 }}>
+              <span style={{ display: 'block', fontWeight: 300, fontSize: '36px', color: 'var(--color-dark)', lineHeight: 1.1 }}>
                 Schedule your
               </span>
-              <span style={{ display: 'block', fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', fontSize: '36px', color: '#1C3F3A', lineHeight: 1.1 }}>
+              <span style={{ display: 'block', fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', fontSize: '36px', color: 'var(--color-primary)', lineHeight: 1.1 }}>
                 cleaning.
               </span>
             </h2>
-            <p style={{ fontWeight: 400, fontSize: '15px', color: '#6b7280', marginTop: '12px', marginBottom: '32px' }}>
+            <p style={{ fontWeight: 400, fontSize: '15px', color: 'var(--color-muted)', marginTop: '12px', marginBottom: '32px' }}>
               Fill in your details and we&apos;ll get back to you promptly.
             </p>
 
@@ -147,13 +147,12 @@ function FormAndInfo() {
               <select
                 value={service} onChange={e => setService(e.target.value)}
                 onFocus={() => handleFocus('service')} onBlur={() => handleBlur('service')}
-                style={{ ...inputStyle, ...focusStyle(focused.service), color: service ? '#0A0C29' : '#9ca3af' }}
+                style={{ ...inputStyle, ...focusStyle(focused.service), color: service ? 'var(--color-dark)' : '#9ca3af' }}
               >
                 <option value="" disabled>Select a service</option>
-                <option>Regular Home Cleaning</option>
-                <option>Deep Cleaning</option>
-                <option>Office Cleaning</option>
-                <option>Move-in / Move-out</option>
+                {businessConfig.services.map(s => (
+                  <option key={s.id}>{s.name}</option>
+                ))}
               </select>
 
               {/* Row 4: Message */}
@@ -169,15 +168,15 @@ function FormAndInfo() {
                 type="submit"
                 style={{
                   width: '100%', marginTop: '8px',
-                  background: '#1C3F3A', color: 'white',
+                  background: 'var(--color-primary)', color: 'white',
                   padding: '16px 32px', borderRadius: '12px',
                   fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '15px',
                   border: 'none', cursor: 'pointer',
                   display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px',
                   transition: 'background 0.2s ease',
                 }}
-                onMouseEnter={e => e.currentTarget.style.background = '#142e2a'}
-                onMouseLeave={e => e.currentTarget.style.background = '#1C3F3A'}
+                onMouseEnter={e => e.currentTarget.style.background = 'var(--color-primaryDark)'}
+                onMouseLeave={e => e.currentTarget.style.background = 'var(--color-primary)'}
               >
                 <FaWhatsapp size={18} />
                 Send via WhatsApp
@@ -192,9 +191,9 @@ function FormAndInfo() {
             <motion.div
               {...fadeUp}
               transition={{ duration: 0.7, ease, delay: 0.1 }}
-              style={{ background: '#EBEBE6', borderRadius: '20px', padding: '32px' }}
+              style={{ background: 'var(--color-cream)', borderRadius: '20px', padding: '32px' }}
             >
-              <p style={{ fontWeight: 700, fontSize: '18px', color: '#0A0C29', marginBottom: '24px', marginTop: 0 }}>
+              <p style={{ fontWeight: 700, fontSize: '18px', color: 'var(--color-dark)', marginBottom: '24px', marginTop: 0 }}>
                 Contact Info
               </p>
               {[
@@ -203,10 +202,10 @@ function FormAndInfo() {
                 { icon: <Mail  size={18} />, text: businessConfig.email },
               ].map(({ icon, text }, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: i < 2 ? '20px' : 0 }}>
-                  <div style={{ width: 40, height: 40, borderRadius: '50%', background: '#1C3F3A', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', flexShrink: 0 }}>
+                  <div style={{ width: 40, height: 40, borderRadius: '50%', background: 'var(--color-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', flexShrink: 0 }}>
                     {icon}
                   </div>
-                  <span style={{ fontWeight: 400, fontSize: '15px', color: '#0A0C29' }}>{text}</span>
+                  <span style={{ fontWeight: 400, fontSize: '15px', color: 'var(--color-dark)' }}>{text}</span>
                 </div>
               ))}
             </motion.div>
@@ -215,7 +214,7 @@ function FormAndInfo() {
             <motion.div
               {...fadeUp}
               transition={{ duration: 0.7, ease, delay: 0.2 }}
-              style={{ background: '#1C3F3A', borderRadius: '20px', padding: '32px' }}
+              style={{ background: 'var(--color-primary)', borderRadius: '20px', padding: '32px' }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '24px' }}>
                 <Clock size={18} color="white" />
@@ -237,7 +236,7 @@ function FormAndInfo() {
                     <span style={{ fontWeight: 600, fontSize: '14px', color: 'white', display: 'flex', alignItems: 'center', gap: '8px' }}>
                       {day}
                       {isToday && (
-                        <span style={{ background: 'white', color: '#1C3F3A', fontWeight: 700, fontSize: '10px', padding: '2px 8px', borderRadius: '9999px' }}>
+                        <span style={{ background: 'white', color: 'var(--color-primary)', fontWeight: 700, fontSize: '10px', padding: '2px 8px', borderRadius: '9999px' }}>
                           TODAY
                         </span>
                       )}
@@ -252,7 +251,7 @@ function FormAndInfo() {
             <motion.div
               {...fadeUp}
               transition={{ duration: 0.7, ease, delay: 0.3 }}
-              style={{ background: '#ffffff', border: '2px solid #e5e7eb', borderRadius: '20px', padding: '24px', display: 'flex', gap: '12px' }}
+              style={{ background: 'var(--color-white)', border: '2px solid var(--color-border)', borderRadius: '20px', padding: '24px', display: 'flex', gap: '12px' }}
             >
               <a
                 href={`https://wa.me/${businessConfig.whatsapp}`}
@@ -272,7 +271,7 @@ function FormAndInfo() {
               <a
                 href={`tel:${businessConfig.phone}`}
                 style={{
-                  flex: 1, background: '#1C3F3A', color: 'white',
+                  flex: 1, background: 'var(--color-primary)', color: 'white',
                   padding: '12px', borderRadius: '12px',
                   fontFamily: 'Inter, sans-serif', fontWeight: 600, fontSize: '14px',
                   display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
@@ -306,21 +305,21 @@ function CalendlySection() {
   }, [hasUrl])
 
   return (
-    <section style={{ background: '#E9EAE8', padding: '96px 0' }}>
+    <section style={{ background: 'var(--color-lightGray)', padding: '96px 0' }}>
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <motion.div {...fadeUp} style={{ marginBottom: '48px' }}>
-          <p style={{ fontWeight: 600, fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#1C3F3A', marginBottom: '12px' }}>
+          <p style={{ fontWeight: 600, fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--color-primary)', marginBottom: '12px' }}>
             PREFER TO SCHEDULE?
           </p>
           <h2 style={{ margin: 0, letterSpacing: '-0.02em' }}>
-            <span style={{ display: 'block', fontWeight: 300, fontSize: 'clamp(32px,4vw,48px)', color: '#0A0C29', lineHeight: 1.1 }}>
+            <span style={{ display: 'block', fontWeight: 300, fontSize: 'clamp(32px,4vw,48px)', color: 'var(--color-dark)', lineHeight: 1.1 }}>
               Pick a time that
             </span>
-            <span style={{ display: 'block', fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', fontSize: 'clamp(32px,4vw,48px)', color: '#1C3F3A', lineHeight: 1.1 }}>
+            <span style={{ display: 'block', fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', fontSize: 'clamp(32px,4vw,48px)', color: 'var(--color-primary)', lineHeight: 1.1 }}>
               works for you.
             </span>
           </h2>
-          <p style={{ fontWeight: 400, fontSize: '16px', color: '#6b7280', marginTop: '16px', marginBottom: 0 }}>
+          <p style={{ fontWeight: 400, fontSize: '16px', color: 'var(--color-muted)', marginTop: '16px', marginBottom: 0 }}>
             Book a free discovery call and we&apos;ll walk you through everything.
           </p>
         </motion.div>
@@ -333,7 +332,7 @@ function CalendlySection() {
             borderRadius: '24px',
             overflow: 'hidden',
             boxShadow: '0 20px 60px rgba(0,0,0,0.08)',
-            border: '1px solid #e5e7eb',
+            border: '1px solid var(--color-border)',
             minHeight: '700px',
           }}
         >
@@ -346,12 +345,12 @@ function CalendlySection() {
           ) : (
             <div style={{ minHeight: '700px', background: '#f9fafb', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '48px' }}>
               <div style={{ width: 64, height: 64, borderRadius: '50%', background: 'rgba(28,63,58,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1C3F3A" strokeWidth="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
               </div>
-              <p style={{ fontWeight: 500, fontSize: '16px', color: '#6b7280', marginTop: '16px', marginBottom: '12px' }}>
+              <p style={{ fontWeight: 500, fontSize: '16px', color: 'var(--color-muted)', marginTop: '16px', marginBottom: '12px' }}>
                 Add your Calendly URL to businessConfig.js
               </p>
-              <code style={{ background: 'rgba(28,63,58,0.08)', color: '#1C3F3A', fontFamily: 'monospace', padding: '8px 16px', borderRadius: '8px', fontSize: '14px' }}>
+              <code style={{ background: 'rgba(28,63,58,0.08)', color: 'var(--color-primary)', fontFamily: 'monospace', padding: '8px 16px', borderRadius: '8px', fontSize: '14px' }}>
                 businessConfig.calendlyUrl = &apos;your-calendly-link&apos;
               </code>
             </div>
@@ -365,18 +364,18 @@ function CalendlySection() {
 /* ─── SECTION 4 — MAP ─── */
 function MapSection() {
   return (
-    <section style={{ background: '#ffffff', paddingTop: '96px', paddingBottom: 0 }}>
+    <section style={{ background: 'var(--color-white)', paddingTop: '96px', paddingBottom: 0 }}>
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <motion.div {...fadeUp} style={{ marginBottom: '48px' }}>
-          <p style={{ fontWeight: 600, fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#1C3F3A', marginBottom: '12px' }}>
+          <p style={{ fontWeight: 600, fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--color-primary)', marginBottom: '12px' }}>
             FIND US
           </p>
           <h2 style={{ margin: 0, letterSpacing: '-0.02em' }}>
-            <span style={{ display: 'block', fontWeight: 300, fontSize: 'clamp(32px,4vw,48px)', color: '#0A0C29', lineHeight: 1.1 }}>
-              Hyderabad,
+            <span style={{ display: 'block', fontWeight: 300, fontSize: 'clamp(32px,4vw,48px)', color: 'var(--color-dark)', lineHeight: 1.1 }}>
+              {businessConfig.location.split(',')[0]},
             </span>
-            <span style={{ display: 'block', fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', fontSize: 'clamp(32px,4vw,48px)', color: '#1C3F3A', lineHeight: 1.1 }}>
-              Telangana.
+            <span style={{ display: 'block', fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', fontSize: 'clamp(32px,4vw,48px)', color: 'var(--color-primary)', lineHeight: 1.1 }}>
+              {businessConfig.location.split(',')[1]?.trim()}.
             </span>
           </h2>
         </motion.div>
@@ -394,9 +393,9 @@ function MapSection() {
               title="Our location"
             />
           ) : (
-            <div style={{ width: '100%', height: '100%', background: '#E9EAE8', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-              <MapPin size={48} color="#1C3F3A" />
-              <p style={{ fontWeight: 500, fontSize: '14px', color: '#6b7280', marginTop: '12px' }}>
+            <div style={{ width: '100%', height: '100%', background: 'var(--color-lightGray)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+              <MapPin size={48} color="var(--color-primary)" />
+              <p style={{ fontWeight: 500, fontSize: '14px', color: 'var(--color-muted)', marginTop: '12px' }}>
                 Add Google Maps embed to businessConfig.js
               </p>
             </div>

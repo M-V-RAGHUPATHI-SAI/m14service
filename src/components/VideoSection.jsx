@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 
 export default function VideoSection({ label, title, videos = [], bg = 'bg-bg-light' }) {
   if (!videos.length) return null
@@ -28,7 +28,7 @@ export default function VideoSection({ label, title, videos = [], bg = 'bg-bg-li
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="rounded-2xl overflow-hidden border border-[#E9EAE8] bg-black aspect-video"
+              className="rounded-2xl overflow-hidden border border-[var(--color-lightGray)] bg-black aspect-video"
             >
               <iframe
                 src={src}

@@ -1,16 +1,16 @@
-import { useState, useEffect } from 'react'
+﻿import { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const SQRT_5000 = Math.sqrt(5000)
 
 const C = {
-  primary:    '#1C3F3A',
-  primaryHov: '#142e2a',
-  nearBlack:  '#0A0C29',
-  border:     '#e5e7eb',
-  white:      '#ffffff',
-  muted:      '#6b7280',
-  cream:      '#EBEBE6',
+  primary:    'var(--color-primary)',
+  primaryHov: 'var(--color-primaryDark)',
+  nearBlack:  'var(--color-dark)',
+  border:     'var(--color-border)',
+  white:      'var(--color-white)',
+  muted:      'var(--color-muted)',
+  cream:      'var(--color-cream)',
 }
 
 function InitialAvatar({ name, isCenter }) {
@@ -146,7 +146,7 @@ export function StaggerTestimonials({ testimonials }) {
           onClick={() => handleMove(-1)}
           style={{
             width: '48px', height: '48px', borderRadius: '50%',
-            border: '1.5px solid #1C3F3A', background: C.white,
+            border: '1.5px solid var(--color-primary)', background: C.white,
             color: C.primary, flexShrink: 0,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             cursor: 'pointer', transition: 'all 0.2s ease', lineHeight: 1,
@@ -161,7 +161,7 @@ export function StaggerTestimonials({ testimonials }) {
           onClick={() => handleMove(1)}
           style={{
             width: '48px', height: '48px', borderRadius: '50%',
-            border: '1.5px solid #1C3F3A', background: C.white,
+            border: '1.5px solid var(--color-primary)', background: C.white,
             color: C.primary, flexShrink: 0,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             cursor: 'pointer', transition: 'all 0.2s ease', lineHeight: 1,

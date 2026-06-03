@@ -1,17 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800&family=Playfair+Display:ital,wght@1,700;1,800;1,900&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-primary:       #1C3F3A;
-  --color-primary-dark:  #142e2a;
-  --color-text-dark:     #0A0C29;
-  --color-bg-light:      #E9EAE8;
-  --color-bg-cream:      #EBEBE6;
-  --color-white:         #ffffff;
-  --color-muted:         #6b7280;
-  --color-border:        #E9EAE8;
+  /* Colors — names match businessConfig.colors keys for JS injection alignment */
+  --color-primary:     #1C3F3A;
+  --color-primaryDark: #142e2a;
+  --color-secondary:   #6BBF9E;
+  --color-dark:        #0A0C29;
+  --color-lightGray:   #E9EAE8;
+  --color-cream:       #EBEBE6;
+  --color-white:       #ffffff;
+  --color-muted:       #6b7280;
+  --color-border:      #e5e7eb;
 
-  --font-sans: 'Inter', system-ui, sans-serif;
+  /* Fonts — overridden at runtime by main.jsx from businessConfig.fonts */
+  --font-sans:    'Inter', system-ui, sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
   --radius-full: 9999px;
 }
 
@@ -28,8 +31,8 @@ body {
 
 body {
   font-family: var(--font-sans);
-  background-color: #ffffff;
-  color: var(--color-text-dark);
+  background-color: var(--color-white);
+  color: var(--color-dark);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
@@ -124,7 +127,7 @@ h1, h2, h3, h4, h5, h6 {
   height: 520px;
 }
 .chat-scroll::-webkit-scrollbar { width: 6px; }
-.chat-scroll::-webkit-scrollbar-track { background: #e5e7eb; }
+.chat-scroll::-webkit-scrollbar-track { background: var(--color-border); }
 .chat-scroll::-webkit-scrollbar-thumb { background: #c4c6cf; border-radius: 999px; }
 @media (max-width: 640px) {
   .chat-panel {
@@ -253,8 +256,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Stat cards + rating badge — mobile-only overrides */
 @media (max-width: 1023px) {
   /* Shadows reduced so they don't bleed outside container */
-  .stat-card-white { box-shadow: 3px 3px 0px #1C3F3A !important; }
-  .stat-card-dark  { box-shadow: 3px 3px 0px #0A0C29 !important; }
+  .stat-card-white { box-shadow: 3px 3px 0px var(--color-primary) !important; }
+  .stat-card-dark  { box-shadow: 3px 3px 0px var(--color-dark) !important; }
 
   /* Stat card grid tighter on mobile */
   .stat-cards-grid { gap: 10px !important; }
@@ -269,6 +272,6 @@ h1, h2, h3, h4, h5, h6 {
   .rating-label    { font-size: 11px !important; }
 
   /* Social icons always green on touch devices */
-  .social-icon-btn { background: #1C3F3A !important; color: white !important; }
+  .social-icon-btn { background: var(--color-primary) !important; color: var(--color-white) !important; }
   .social-icon-btn i { color: white !important; }
 }

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 import { businessConfig } from '../businessConfig'
 import Counter from './Counter'
 
@@ -12,7 +12,7 @@ export default function RatingSummary() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="bg-bg-cream rounded-3xl border border-[#E9EAE8] p-10 md:p-14 text-center"
+          className="bg-bg-cream rounded-3xl border border-[var(--color-lightGray)] p-10 md:p-14 text-center"
         >
           <div className="flex justify-center text-yellow-400 text-2xl gap-1 mb-5">
             {[...Array(5)].map((_, i) => <i key={i} className="fa-solid fa-star" />)}
@@ -27,7 +27,7 @@ export default function RatingSummary() {
             Across {businessConfig.location}, families and businesses trust {businessConfig.name} to keep their spaces spotless.
           </p>
 
-          <div className="inline-flex items-center gap-2 mt-6 px-4 py-2 rounded-full bg-[#1C3F3A] text-white text-sm font-semibold">
+          <div className="inline-flex items-center gap-2 mt-6 px-4 py-2 rounded-full bg-[var(--color-primary)] text-white text-sm font-semibold">
             <i className="fa-solid fa-circle-check" /> Verified Reviews
           </div>
         </motion.div>

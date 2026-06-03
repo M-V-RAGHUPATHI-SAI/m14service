@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+﻿import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { businessConfig } from '../businessConfig'
 
@@ -70,7 +70,7 @@ function SendIcon() {
 /* ─── TYPING INDICATOR ─── */
 function TypingDots() {
   return (
-    <div style={{ alignSelf: 'flex-start', background: 'white', border: '1px solid #e5e7eb', borderRadius: '4px 16px 16px 16px', padding: '12px 16px', display: 'flex', gap: '4px' }}>
+    <div style={{ alignSelf: 'flex-start', background: 'white', border: '1px solid var(--color-border)', borderRadius: '4px 16px 16px 16px', padding: '12px 16px', display: 'flex', gap: '4px' }}>
       {[0, 1, 2].map(i => (
         <motion.span
           key={i}
@@ -91,9 +91,9 @@ function Bubble({ role, children }) {
       style={{
         alignSelf: isUser ? 'flex-end' : 'flex-start',
         maxWidth: '85%',
-        background: isUser ? '#1C3F3A' : 'white',
-        color: isUser ? 'white' : '#0A0C29',
-        border: isUser ? 'none' : '1px solid #e5e7eb',
+        background: isUser ? 'var(--color-primary)' : 'white',
+        color: isUser ? 'white' : 'var(--color-dark)',
+        border: isUser ? 'none' : '1px solid var(--color-border)',
         borderRadius: isUser ? '16px 4px 16px 16px' : '4px 16px 16px 16px',
         padding: '10px 14px',
         fontFamily: 'Inter, sans-serif',
@@ -264,9 +264,9 @@ export default function ChatWidget() {
             }}
           >
             {/* Header */}
-            <div style={{ background: '#1C3F3A', borderRadius: '20px 20px 0 0', padding: '16px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
+            <div style={{ background: 'var(--color-primary)', borderRadius: '20px 20px 0 0', padding: '16px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#6BBF9E', flexShrink: 0 }} />
+                <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--color-secondary)', flexShrink: 0 }} />
                 <div>
                   <div style={{ color: 'white', fontFamily: 'Inter, sans-serif', fontWeight: 600, fontSize: '14px' }}>
                     {businessConfig.name} Assistant
@@ -306,7 +306,7 @@ export default function ChatWidget() {
                     <button
                       key={q}
                       onClick={() => sendMessage(q)}
-                      style={{ border: '1.5px solid #1C3F3A', color: '#1C3F3A', background: 'white', borderRadius: '999px', padding: '6px 14px', fontFamily: 'Inter, sans-serif', fontSize: '12px', fontWeight: 600, cursor: 'pointer' }}
+                      style={{ border: '1.5px solid var(--color-primary)', color: 'var(--color-primary)', background: 'white', borderRadius: '999px', padding: '6px 14px', fontFamily: 'Inter, sans-serif', fontSize: '12px', fontWeight: 600, cursor: 'pointer' }}
                     >
                       {q}
                     </button>
@@ -318,14 +318,14 @@ export default function ChatWidget() {
 
               {/* Inline lead capture form */}
               {showLeadForm && (
-                <form onSubmit={submitLead} style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '16px', padding: '14px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <form onSubmit={submitLead} style={{ background: 'white', border: '1px solid var(--color-border)', borderRadius: '16px', padding: '14px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
                     <input value={leadName} onChange={e => setLeadName(e.target.value)} placeholder="Name" required
-                      style={{ border: '1px solid #e5e7eb', borderRadius: '8px', padding: '8px 10px', fontFamily: 'Inter, sans-serif', fontSize: '13px', outline: 'none', minWidth: 0 }} />
+                      style={{ border: '1px solid var(--color-border)', borderRadius: '8px', padding: '8px 10px', fontFamily: 'Inter, sans-serif', fontSize: '13px', outline: 'none', minWidth: 0 }} />
                     <input value={leadPhone} onChange={e => setLeadPhone(e.target.value)} placeholder="Phone" required
-                      style={{ border: '1px solid #e5e7eb', borderRadius: '8px', padding: '8px 10px', fontFamily: 'Inter, sans-serif', fontSize: '13px', outline: 'none', minWidth: 0 }} />
+                      style={{ border: '1px solid var(--color-border)', borderRadius: '8px', padding: '8px 10px', fontFamily: 'Inter, sans-serif', fontSize: '13px', outline: 'none', minWidth: 0 }} />
                   </div>
-                  <button type="submit" style={{ background: '#1C3F3A', color: 'white', border: 'none', borderRadius: '8px', padding: '10px', fontFamily: 'Inter, sans-serif', fontWeight: 600, fontSize: '13px', cursor: 'pointer' }}>
+                  <button type="submit" style={{ background: 'var(--color-primary)', color: 'white', border: 'none', borderRadius: '8px', padding: '10px', fontFamily: 'Inter, sans-serif', fontWeight: 600, fontSize: '13px', cursor: 'pointer' }}>
                     Send Request
                   </button>
                 </form>
@@ -335,21 +335,21 @@ export default function ChatWidget() {
             {/* Input */}
             <form
               onSubmit={(e) => { e.preventDefault(); sendMessage(input) }}
-              style={{ background: 'white', borderTop: '1px solid #e5e7eb', padding: '12px 16px', display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}
+              style={{ background: 'white', borderTop: '1px solid var(--color-border)', padding: '12px 16px', display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}
             >
               <input
                 value={input}
                 onChange={e => setInput(e.target.value.slice(0, INPUT_MAX))}
                 placeholder={limitHit ? 'Session ended — WhatsApp us directly' : 'Type your message…'}
                 disabled={limitHit}
-                style={{ flex: 1, border: 'none', outline: 'none', background: 'transparent', fontFamily: 'Inter, sans-serif', fontSize: '14px', color: '#0A0C29', opacity: limitHit ? 0.5 : 1 }}
+                style={{ flex: 1, border: 'none', outline: 'none', background: 'transparent', fontFamily: 'Inter, sans-serif', fontSize: '14px', color: 'var(--color-dark)', opacity: limitHit ? 0.5 : 1 }}
               />
               <button
                 type="submit"
                 disabled={!input.trim() || typing || limitHit}
                 aria-label="Send message"
                 style={{
-                  width: 36, height: 36, borderRadius: '50%', background: '#1C3F3A',
+                  width: 36, height: 36, borderRadius: '50%', background: 'var(--color-primary)',
                   border: 'none', cursor: input.trim() && !typing && !limitHit ? 'pointer' : 'default',
                   opacity: input.trim() && !typing && !limitHit ? 1 : 0.4,
                   display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
@@ -371,7 +371,7 @@ export default function ChatWidget() {
         whileTap={{ scale: 0.96 }}
         style={{
           position: 'fixed', bottom: '24px', right: '24px', zIndex: 999,
-          width: 56, height: 56, borderRadius: '50%', background: '#1C3F3A',
+          width: 56, height: 56, borderRadius: '50%', background: 'var(--color-primary)',
           border: 'none', cursor: 'pointer',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           boxShadow: '0 4px 20px rgba(28,63,58,0.4)',

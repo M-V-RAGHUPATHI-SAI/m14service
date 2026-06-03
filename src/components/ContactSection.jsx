@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { businessConfig } from '../businessConfig'
 
@@ -43,7 +43,7 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="bg-bg-cream rounded-3xl p-8 md:p-10 border border-[#E9EAE8]"
+            className="bg-bg-cream rounded-3xl p-8 md:p-10 border border-[var(--color-lightGray)]"
           >
             <AnimatePresence mode="wait">
               {sent ? (
@@ -75,25 +75,25 @@ export default function ContactSection() {
                     <div>
                       <label className="block text-xs font-semibold text-text-dark mb-1">Full Name *</label>
                       <input required name="name" value={form.name} onChange={handleChange} placeholder="Jane Smith"
-                        className="w-full px-4 py-3 rounded-lg border border-[#E9EAE8] bg-white text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/15 transition-all" />
+                        className="w-full px-4 py-3 rounded-lg border border-[var(--color-lightGray)] bg-white text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/15 transition-all" />
                     </div>
                     <div>
                       <label className="block text-xs font-semibold text-text-dark mb-1">Phone</label>
                       <input name="phone" value={form.phone} onChange={handleChange} placeholder="+91 00000 00000"
-                        className="w-full px-4 py-3 rounded-lg border border-[#E9EAE8] bg-white text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/15 transition-all" />
+                        className="w-full px-4 py-3 rounded-lg border border-[var(--color-lightGray)] bg-white text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/15 transition-all" />
                     </div>
                   </div>
 
                   <div>
                     <label className="block text-xs font-semibold text-text-dark mb-1">Email *</label>
                     <input required type="email" name="email" value={form.email} onChange={handleChange} placeholder="you@example.com"
-                      className="w-full px-4 py-3 rounded-lg border border-[#E9EAE8] bg-white text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/15 transition-all" />
+                      className="w-full px-4 py-3 rounded-lg border border-[var(--color-lightGray)] bg-white text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/15 transition-all" />
                   </div>
 
                   <div>
                     <label className="block text-xs font-semibold text-text-dark mb-1">Service</label>
                     <select name="service" value={form.service} onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-[#E9EAE8] bg-white text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/15 transition-all">
+                      className="w-full px-4 py-3 rounded-lg border border-[var(--color-lightGray)] bg-white text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/15 transition-all">
                       <option value="">Select a service…</option>
                       {businessConfig.services.map((s) => <option key={s.name}>{s.name}</option>)}
                     </select>
@@ -102,7 +102,7 @@ export default function ContactSection() {
                   <div>
                     <label className="block text-xs font-semibold text-text-dark mb-1">Message</label>
                     <textarea name="message" value={form.message} onChange={handleChange} rows={3} placeholder="Tell us about your space…"
-                      className="w-full px-4 py-3 rounded-lg border border-[#E9EAE8] bg-white text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/15 transition-all resize-none" />
+                      className="w-full px-4 py-3 rounded-lg border border-[var(--color-lightGray)] bg-white text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/15 transition-all resize-none" />
                   </div>
 
                   <motion.button whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.98 }} type="submit"
@@ -122,27 +122,27 @@ export default function ContactSection() {
             transition={{ duration: 0.7 }}
             className="space-y-6"
           >
-            <div className="p-8 rounded-2xl bg-bg-light border border-[#E9EAE8]">
+            <div className="p-8 rounded-2xl bg-bg-light border border-[var(--color-lightGray)]">
               <h3 className="font-bold text-text-dark text-lg mb-5 flex items-center gap-2">
                 <i className="fa-solid fa-address-book text-primary" /> Contact Info
               </h3>
               <ul className="space-y-4">
                 <li className="flex items-center gap-4 text-sm text-text-dark">
-                  <span className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-primary border border-[#E9EAE8]"><i className="fa-solid fa-location-dot" /></span>
+                  <span className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-primary border border-[var(--color-lightGray)]"><i className="fa-solid fa-location-dot" /></span>
                   <span>{businessConfig.address}</span>
                 </li>
                 <li className="flex items-center gap-4 text-sm text-text-dark">
-                  <span className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-primary border border-[#E9EAE8]"><i className="fa-solid fa-phone" /></span>
+                  <span className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-primary border border-[var(--color-lightGray)]"><i className="fa-solid fa-phone" /></span>
                   <a href={`tel:${businessConfig.phone}`} className="hover:text-primary transition-colors">{businessConfig.phone}</a>
                 </li>
                 <li className="flex items-center gap-4 text-sm text-text-dark">
-                  <span className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-primary border border-[#E9EAE8]"><i className="fa-solid fa-envelope" /></span>
+                  <span className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-primary border border-[var(--color-lightGray)]"><i className="fa-solid fa-envelope" /></span>
                   <a href={`mailto:${businessConfig.email}`} className="hover:text-primary transition-colors">{businessConfig.email}</a>
                 </li>
               </ul>
             </div>
 
-            <div className="p-8 rounded-2xl bg-bg-light border border-[#E9EAE8]">
+            <div className="p-8 rounded-2xl bg-bg-light border border-[var(--color-lightGray)]">
               <h3 className="font-bold text-text-dark text-lg mb-5 flex items-center gap-2">
                 <i className="fa-solid fa-clock text-primary" /> Working Hours
               </h3>
@@ -151,7 +151,7 @@ export default function ContactSection() {
                   const isToday = day === activeHours
                   return (
                     <li key={day}
-                      className={`flex justify-between items-center text-sm px-3 py-2 rounded-lg ${isToday ? 'bg-[#1C3F3A] text-white' : ''}`}>
+                      className={`flex justify-between items-center text-sm px-3 py-2 rounded-lg ${isToday ? 'bg-[var(--color-primary)] text-white' : ''}`}>
                       <span className={isToday ? 'font-semibold' : 'text-muted'}>
                         {day}{isToday && <span className="ml-2 text-[10px] uppercase tracking-wider opacity-80">Today</span>}
                       </span>

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { businessConfig } from '../businessConfig'
 
@@ -8,7 +8,7 @@ const item = { hidden: { opacity: 0, y: 32 }, visible: { opacity: 1, y: 0, trans
 
 export default function ProjectsShowcase() {
   return (
-    <section className="bg-[#E9EAE8] py-28 overflow-hidden">
+    <section className="bg-[var(--color-lightGray)] py-28 overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -18,7 +18,7 @@ export default function ProjectsShowcase() {
           className="mb-14"
         >
           <p className="section-label mb-3">Our Work</p>
-          <h2 className="font-extrabold text-[#0A0C29]" style={{ fontSize: 'clamp(32px, 4vw, 48px)', letterSpacing: '-0.02em' }}>
+          <h2 className="font-extrabold text-[var(--color-dark)]" style={{ fontSize: 'clamp(32px, 4vw, 48px)', letterSpacing: '-0.02em' }}>
             Spaces we&apos;ve transformed
           </h2>
         </motion.div>
@@ -44,7 +44,7 @@ export default function ProjectsShowcase() {
                 style={{ background: 'linear-gradient(to top, rgba(28,63,58,0.85), transparent)' }}
               />
               <div className="absolute bottom-0 left-0 p-7 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                <span className="inline-block px-3 py-1 rounded-full bg-[#1C3F3A]/30 backdrop-blur border border-[#1C3F3A]/50 text-white text-xs font-semibold mb-3">
+                <span className="inline-block px-3 py-1 rounded-full bg-[var(--color-primary)]/30 backdrop-blur border border-[var(--color-primary)]/50 text-white text-xs font-semibold mb-3">
                   {p.category}
                 </span>
                 <h3 className="text-white font-bold" style={{ fontSize: '20px' }}>{p.title}</h3>
@@ -62,7 +62,7 @@ export default function ProjectsShowcase() {
         </motion.div>
 
         <div className="text-center mt-14">
-          <Link to="/gallery" className="inline-flex items-center px-10 py-4 rounded-full bg-[#1C3F3A] text-white font-bold hover:bg-[#142e2a] transition-colors duration-300">
+          <Link to="/gallery" className="inline-flex items-center px-10 py-4 rounded-full bg-[var(--color-primary)] text-white font-bold hover:bg-[var(--color-primaryDark)] transition-colors duration-300">
             View All Work
           </Link>
         </div>

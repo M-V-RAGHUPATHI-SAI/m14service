@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { businessConfig } from '../businessConfig'
 
@@ -24,7 +24,7 @@ export default function TestimonialsStrip() {
           className="mb-14"
         >
           <p className="section-label mb-3">Client Stories</p>
-          <h2 className="font-extrabold text-[#0A0C29]" style={{ fontSize: 'clamp(32px, 4vw, 48px)', letterSpacing: '-0.02em' }}>
+          <h2 className="font-extrabold text-[var(--color-dark)]" style={{ fontSize: 'clamp(32px, 4vw, 48px)', letterSpacing: '-0.02em' }}>
             Loved by clients across {businessConfig.location.split(',')[0]}
           </h2>
         </motion.div>
@@ -37,17 +37,17 @@ export default function TestimonialsStrip() {
           className="grid md:grid-cols-3 gap-6"
         >
           {reviews.map((t) => (
-            <motion.div key={t.name} variants={item} className="bg-[#EBEBE6] rounded-[20px] p-8">
-              <div className="text-[#1C3F3A] mb-4" style={{ fontSize: '15px' }}>★★★★★</div>
-              <span className="block font-light text-[#1C3F3A] leading-none" style={{ fontSize: '36px' }}>&ldquo;</span>
-              <p className="text-[#0A0C29] -mt-3" style={{ fontSize: '16px', lineHeight: 1.75 }}>{t.text}</p>
+            <motion.div key={t.name} variants={item} className="bg-[var(--color-cream)] rounded-[20px] p-8">
+              <div className="text-[var(--color-primary)] mb-4" style={{ fontSize: '15px' }}>★★★★★</div>
+              <span className="block font-light text-[var(--color-primary)] leading-none" style={{ fontSize: '36px' }}>&ldquo;</span>
+              <p className="text-[var(--color-dark)] -mt-3" style={{ fontSize: '16px', lineHeight: 1.75 }}>{t.text}</p>
               <div className="flex items-center gap-3 mt-6">
-                <div className="w-11 h-11 rounded-full bg-[#1C3F3A] text-white flex items-center justify-center font-semibold text-sm">
+                <div className="w-11 h-11 rounded-full bg-[var(--color-primary)] text-white flex items-center justify-center font-semibold text-sm">
                   {initials(t.name)}
                 </div>
                 <div>
-                  <div className="font-semibold text-[#0A0C29]" style={{ fontSize: '15px' }}>{t.name}</div>
-                  <div className="text-[#6b7280]" style={{ fontSize: '13px' }}>{t.location}</div>
+                  <div className="font-semibold text-[var(--color-dark)]" style={{ fontSize: '15px' }}>{t.name}</div>
+                  <div className="text-[var(--color-muted)]" style={{ fontSize: '13px' }}>{t.location}</div>
                 </div>
               </div>
             </motion.div>
@@ -55,7 +55,7 @@ export default function TestimonialsStrip() {
         </motion.div>
 
         <div className="text-center mt-12">
-          <Link to="/testimonials" className="inline-flex items-center px-8 py-3 rounded-full border border-[#0A0C29] text-[#0A0C29] font-medium hover:bg-[#1C3F3A] hover:border-[#1C3F3A] hover:text-white transition-colors">
+          <Link to="/testimonials" className="inline-flex items-center px-8 py-3 rounded-full border border-[var(--color-dark)] text-[var(--color-dark)] font-medium hover:bg-[var(--color-primary)] hover:border-[var(--color-primary)] hover:text-white transition-colors">
             Read all reviews →
           </Link>
         </div>

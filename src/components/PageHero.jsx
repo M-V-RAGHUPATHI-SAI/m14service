@@ -1,9 +1,9 @@
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 
 // Reusable inner-page banner — dark ink background with the page keyword behind.
 export default function PageHero({ label, title, subtitle, keyword }) {
   return (
-    <section className="relative bg-[#1C3F3A] text-white overflow-hidden pt-40 pb-24">
+    <section className="relative bg-[var(--color-primary)] text-white overflow-hidden pt-40 pb-24">
       {/* Background keyword */}
       {keyword && (
         <div
@@ -11,7 +11,7 @@ export default function PageHero({ label, title, subtitle, keyword }) {
             position: 'absolute',
             fontSize: '20vw',
             fontWeight: 900,
-            color: '#ffffff',
+            color: 'var(--color-white)',
             opacity: 0.04,
             top: '55%',
             left: '50%',

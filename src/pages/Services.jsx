@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+﻿import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { businessConfig } from '../businessConfig'
@@ -17,7 +17,7 @@ const fadeUp = {
 function Hero() {
   return (
     <section
-      style={{ background: '#1C3F3A', minHeight: '60vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}
+      style={{ background: 'var(--color-primary)', minHeight: '60vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}
       className="pt-[120px] pb-12 px-6 lg:pt-[160px] lg:pb-20 lg:px-20"
     >
       {/* Decorative circle */}
@@ -97,19 +97,19 @@ function ServicesList() {
   }
 
   return (
-    <section style={{ background: '#EBEBE6', padding: '112px 0', overflow: 'hidden' }}>
+    <section style={{ background: 'var(--color-cream)', padding: '112px 0', overflow: 'hidden' }}>
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
         <motion.div {...fadeUp} style={{ marginBottom: '28px' }}>
-          <p style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#1C3F3A', display: 'block', marginBottom: '14px' }}>
+          <p style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-primary)', display: 'block', marginBottom: '14px' }}>
             Our Services
           </p>
           <h2 style={{ lineHeight: 1.08, letterSpacing: '-0.02em', margin: 0 }}>
-            <span style={{ display: 'block', fontSize: 'clamp(36px,4vw,48px)', fontWeight: 300, color: '#0A0C29' }}>
+            <span style={{ display: 'block', fontSize: 'clamp(36px,4vw,48px)', fontWeight: 300, color: 'var(--color-dark)' }}>
               Precision-driven
             </span>
-            <span style={{ display: 'block', fontSize: 'clamp(36px,4vw,48px)', fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', color: '#1C3F3A' }}>
+            <span style={{ display: 'block', fontSize: 'clamp(36px,4vw,48px)', fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', color: 'var(--color-primary)' }}>
               cleaning solutions.
             </span>
           </h2>
@@ -132,9 +132,9 @@ function ServicesList() {
                 onClick={() => switchTo(s.id)}
                 style={{
                   padding: '9px 22px', borderRadius: '9999px', flexShrink: 0,
-                  border: on ? 'none' : '1px solid #e5e7eb',
-                  background: on ? '#1C3F3A' : 'white',
-                  color: on ? 'white' : '#0A0C29',
+                  border: on ? 'none' : '1px solid var(--color-border)',
+                  background: on ? 'var(--color-primary)' : 'white',
+                  color: on ? 'white' : 'var(--color-dark)',
                   fontSize: '14px', fontWeight: 600, cursor: 'pointer', whiteSpace: 'nowrap',
                   boxShadow: on ? '0 2px 10px rgba(28,63,58,0.28)' : 'none',
                   transition: 'background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease',
@@ -164,33 +164,33 @@ function ServicesList() {
               animate="center"
               exit="exit"
               transition={{ duration: 0.45, ease }}
-              style={{ display: 'flex', borderRadius: '20px', overflow: 'hidden', background: 'white', boxShadow: '6px 6px 0px #1C3F3A', minHeight: '460px' }}
+              style={{ display: 'flex', borderRadius: '20px', overflow: 'hidden', background: 'white', boxShadow: '6px 6px 0px var(--color-primary)', minHeight: '460px' }}
             >
               {/* LEFT 55% — content */}
               <div style={{ width: '55%', padding: '48px 52px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                 <div>
-                  <span style={{ fontSize: '13px', fontWeight: 700, color: '#1C3F3A', opacity: 0.5, display: 'block', marginBottom: '12px', letterSpacing: '0.05em' }}>
+                  <span style={{ fontSize: '13px', fontWeight: 700, color: 'var(--color-primary)', opacity: 0.5, display: 'block', marginBottom: '12px', letterSpacing: '0.05em' }}>
                     {svc.number}
                   </span>
                   {svc.badge && (
-                    <span style={{ display: 'inline-block', marginBottom: '14px', padding: '4px 14px', borderRadius: '9999px', background: '#E8F1EE', color: '#1C3F3A', fontSize: '12px', fontWeight: 600 }}>
+                    <span style={{ display: 'inline-block', marginBottom: '14px', padding: '4px 14px', borderRadius: '9999px', background: '#E8F1EE', color: 'var(--color-primary)', fontSize: '12px', fontWeight: 600 }}>
                       {svc.badge}
                     </span>
                   )}
-                  <h3 style={{ margin: '0 0 8px 0', fontSize: '28px', fontWeight: 700, color: '#0A0C29', lineHeight: 1.2 }}>
+                  <h3 style={{ margin: '0 0 8px 0', fontSize: '28px', fontWeight: 700, color: 'var(--color-dark)', lineHeight: 1.2 }}>
                     {svc.name}
                   </h3>
-                  <p style={{ margin: '0 0 20px 0', fontSize: '22px', fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', color: '#1C3F3A', lineHeight: 1.3 }}>
+                  <p style={{ margin: '0 0 20px 0', fontSize: '22px', fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', color: 'var(--color-primary)', lineHeight: 1.3 }}>
                     {svc.subtitle || svc.oneliner}
                   </p>
-                  <p style={{ margin: '0 0 28px 0', fontSize: '15px', color: '#6b7280', lineHeight: 1.75 }}>
+                  <p style={{ margin: '0 0 28px 0', fontSize: '15px', color: 'var(--color-muted)', lineHeight: 1.75 }}>
                     {svc.description}
                   </p>
                   <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
                     {svc.features.map((f, i) => (
                       <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                        <span style={{ color: '#1C3F3A', fontWeight: 700, fontSize: '14px', flexShrink: 0 }}>✓</span>
-                        <span style={{ fontSize: '14px', fontWeight: 500, color: '#0A0C29' }}>{f}</span>
+                        <span style={{ color: 'var(--color-primary)', fontWeight: 700, fontSize: '14px', flexShrink: 0 }}>✓</span>
+                        <span style={{ fontSize: '14px', fontWeight: 500, color: 'var(--color-dark)' }}>{f}</span>
                       </li>
                     ))}
                   </ul>
@@ -198,9 +198,9 @@ function ServicesList() {
                 <div style={{ marginTop: '36px' }}>
                   <Link
                     to={businessConfig.ctaPrimary.link}
-                    style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: '#1C3F3A', color: 'white', fontWeight: 700, fontSize: '15px', padding: '14px 28px', borderRadius: '9999px', textDecoration: 'none', transition: 'background 0.2s ease, transform 0.2s ease' }}
-                    onMouseEnter={e => { e.currentTarget.style.background = '#142e2a'; e.currentTarget.style.transform = 'scale(1.02)' }}
-                    onMouseLeave={e => { e.currentTarget.style.background = '#1C3F3A'; e.currentTarget.style.transform = 'scale(1)' }}
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'var(--color-primary)', color: 'white', fontWeight: 700, fontSize: '15px', padding: '14px 28px', borderRadius: '9999px', textDecoration: 'none', transition: 'background 0.2s ease, transform 0.2s ease' }}
+                    onMouseEnter={e => { e.currentTarget.style.background = 'var(--color-primaryDark)'; e.currentTarget.style.transform = 'scale(1.02)' }}
+                    onMouseLeave={e => { e.currentTarget.style.background = 'var(--color-primary)'; e.currentTarget.style.transform = 'scale(1)' }}
                   >
                     {businessConfig.ctaPrimary.label} →
                   </Link>
@@ -212,7 +212,7 @@ function ServicesList() {
                 <img src={svc.image} alt={svc.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} onError={e => { e.target.style.display = 'none' }} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,12,41,0.55) 0%, transparent 55%)', pointerEvents: 'none' }} />
                 {svc.price && (
-                  <div style={{ position: 'absolute', bottom: '24px', left: '24px', background: 'white', padding: '10px 20px', borderRadius: '9999px', boxShadow: '4px 4px 0px #1C3F3A', fontSize: '14px', fontWeight: 700, color: '#0A0C29' }}>
+                  <div style={{ position: 'absolute', bottom: '24px', left: '24px', background: 'white', padding: '10px 20px', borderRadius: '9999px', boxShadow: '4px 4px 0px var(--color-primary)', fontSize: '14px', fontWeight: 700, color: 'var(--color-dark)' }}>
                     From {svc.price} / visit
                   </div>
                 )}
@@ -234,7 +234,7 @@ function ServicesList() {
               onClick={() => activeIndex > 0 && switchTo(services[activeIndex - 1].id)}
               style={{
                 width: '40px', height: '40px', borderRadius: '50%', flexShrink: 0,
-                border: '1.5px solid #1C3F3A', color: '#1C3F3A', background: 'transparent',
+                border: '1.5px solid var(--color-primary)', color: 'var(--color-primary)', background: 'transparent',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 fontSize: '18px', cursor: activeIndex === 0 ? 'default' : 'pointer',
                 opacity: activeIndex === 0 ? 0.3 : 1, transition: 'opacity 0.2s ease',
@@ -255,10 +255,10 @@ function ServicesList() {
                   exit="exit"
                   transition={{ duration: 0.3, ease }}
                 >
-                  <div style={{ fontSize: '15px', fontWeight: 600, color: '#0A0C29', lineHeight: 1.2 }}>
+                  <div style={{ fontSize: '15px', fontWeight: 600, color: 'var(--color-dark)', lineHeight: 1.2 }}>
                     {svc.name}
                   </div>
-                  <div style={{ fontSize: '11px', fontWeight: 400, color: '#6b7280', letterSpacing: '0.1em', marginTop: '3px' }}>
+                  <div style={{ fontSize: '11px', fontWeight: 400, color: 'var(--color-muted)', letterSpacing: '0.1em', marginTop: '3px' }}>
                     {String(activeIndex + 1).padStart(2, '0')} / {String(services.length).padStart(2, '0')}
                   </div>
                 </motion.div>
@@ -270,7 +270,7 @@ function ServicesList() {
               onClick={() => activeIndex < services.length - 1 && switchTo(services[activeIndex + 1].id)}
               style={{
                 width: '40px', height: '40px', borderRadius: '50%', flexShrink: 0,
-                border: '1.5px solid #1C3F3A', color: '#1C3F3A', background: 'transparent',
+                border: '1.5px solid var(--color-primary)', color: 'var(--color-primary)', background: 'transparent',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 fontSize: '18px', cursor: activeIndex === services.length - 1 ? 'default' : 'pointer',
                 opacity: activeIndex === services.length - 1 ? 0.3 : 1, transition: 'opacity 0.2s ease',
@@ -297,41 +297,41 @@ function ServicesList() {
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.45, ease }}
-                style={{ borderRadius: '20px', overflow: 'hidden', background: 'white', boxShadow: '6px 6px 0px #1C3F3A' }}
+                style={{ borderRadius: '20px', overflow: 'hidden', background: 'white', boxShadow: '6px 6px 0px var(--color-primary)' }}
               >
                 {/* Image */}
                 <div style={{ position: 'relative', height: '220px', overflow: 'hidden' }}>
                   <img src={svc.image} alt={svc.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} onError={e => { e.target.style.display = 'none' }} />
                   <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,12,41,0.55) 0%, transparent 55%)', pointerEvents: 'none' }} />
                   {svc.price && (
-                    <div style={{ position: 'absolute', bottom: '16px', left: '16px', background: 'white', padding: '7px 14px', borderRadius: '9999px', boxShadow: '4px 4px 0px #1C3F3A', fontSize: '13px', fontWeight: 700, color: '#0A0C29' }}>
+                    <div style={{ position: 'absolute', bottom: '16px', left: '16px', background: 'white', padding: '7px 14px', borderRadius: '9999px', boxShadow: '4px 4px 0px var(--color-primary)', fontSize: '13px', fontWeight: 700, color: 'var(--color-dark)' }}>
                       From {svc.price} / visit
                     </div>
                   )}
                 </div>
                 {/* Content */}
                 <div style={{ padding: '20px 20px 24px' }}>
-                  <span style={{ fontSize: '12px', fontWeight: 700, color: '#1C3F3A', opacity: 0.5, display: 'block', marginBottom: '8px', letterSpacing: '0.05em' }}>{svc.number}</span>
+                  <span style={{ fontSize: '12px', fontWeight: 700, color: 'var(--color-primary)', opacity: 0.5, display: 'block', marginBottom: '8px', letterSpacing: '0.05em' }}>{svc.number}</span>
                   {svc.badge && (
-                    <span style={{ display: 'inline-block', marginBottom: '8px', padding: '3px 10px', borderRadius: '9999px', background: '#E8F1EE', color: '#1C3F3A', fontSize: '11px', fontWeight: 600 }}>{svc.badge}</span>
+                    <span style={{ display: 'inline-block', marginBottom: '8px', padding: '3px 10px', borderRadius: '9999px', background: '#E8F1EE', color: 'var(--color-primary)', fontSize: '11px', fontWeight: 600 }}>{svc.badge}</span>
                   )}
-                  <h3 style={{ margin: '0 0 4px 0', fontSize: '22px', fontWeight: 700, color: '#0A0C29', lineHeight: 1.2 }}>{svc.name}</h3>
-                  <p style={{ margin: '0 0 12px 0', fontSize: '17px', fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', color: '#1C3F3A' }}>
+                  <h3 style={{ margin: '0 0 4px 0', fontSize: '22px', fontWeight: 700, color: 'var(--color-dark)', lineHeight: 1.2 }}>{svc.name}</h3>
+                  <p style={{ margin: '0 0 12px 0', fontSize: '17px', fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', color: 'var(--color-primary)' }}>
                     {svc.subtitle || svc.oneliner}
                   </p>
-                  <p style={{ margin: '0 0 4px 0', fontSize: '14px', color: '#6b7280', lineHeight: 1.7, ...(expanded ? {} : { display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }) }}>
+                  <p style={{ margin: '0 0 4px 0', fontSize: '14px', color: 'var(--color-muted)', lineHeight: 1.7, ...(expanded ? {} : { display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }) }}>
                     {svc.description}
                   </p>
                   <ul style={{ listStyle: 'none', margin: '12px 0 20px', padding: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
                     {svc.features.slice(0, expanded ? undefined : 3).map((f, i) => (
                       <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <span style={{ color: '#1C3F3A', fontWeight: 700, fontSize: '13px', flexShrink: 0 }}>✓</span>
-                        <span style={{ fontSize: '13px', fontWeight: 500, color: '#0A0C29' }}>{f}</span>
+                        <span style={{ color: 'var(--color-primary)', fontWeight: 700, fontSize: '13px', flexShrink: 0 }}>✓</span>
+                        <span style={{ fontSize: '13px', fontWeight: 500, color: 'var(--color-dark)' }}>{f}</span>
                       </li>
                     ))}
                     {!expanded && svc.features.length > 3 && (
                       <li>
-                        <button onClick={() => setExpanded(true)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '13px', color: '#1C3F3A', fontWeight: 600, padding: 0, textDecoration: 'underline' }}>
+                        <button onClick={() => setExpanded(true)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '13px', color: 'var(--color-primary)', fontWeight: 600, padding: 0, textDecoration: 'underline' }}>
                           + {svc.features.length - 3} more
                         </button>
                       </li>
@@ -339,7 +339,7 @@ function ServicesList() {
                   </ul>
                   <Link
                     to={businessConfig.ctaPrimary.link}
-                    style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '6px', background: '#1C3F3A', color: 'white', fontWeight: 700, fontSize: '15px', padding: '14px', borderRadius: '9999px', textDecoration: 'none' }}
+                    style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '6px', background: 'var(--color-primary)', color: 'white', fontWeight: 700, fontSize: '15px', padding: '14px', borderRadius: '9999px', textDecoration: 'none' }}
                   >
                     {businessConfig.ctaPrimary.label} →
                   </Link>
@@ -349,10 +349,10 @@ function ServicesList() {
           </motion.div>
 
           {/* Progress bar */}
-          <div style={{ marginTop: '20px', height: '3px', background: '#e5e7eb', borderRadius: '2px', overflow: 'hidden' }}>
+          <div style={{ marginTop: '20px', height: '3px', background: 'var(--color-border)', borderRadius: '2px', overflow: 'hidden' }}>
             <motion.div
               layout
-              style={{ height: '100%', background: '#1C3F3A', borderRadius: '2px', width: `${((activeIndex + 1) / services.length) * 100}%` }}
+              style={{ height: '100%', background: 'var(--color-primary)', borderRadius: '2px', width: `${((activeIndex + 1) / services.length) * 100}%` }}
               transition={{ duration: 0.4, ease }}
             />
           </div>
@@ -370,31 +370,31 @@ function FAQ() {
   const toggle = (i) => setOpenIndex(openIndex === i ? null : i)
 
   return (
-    <section className="py-28" style={{ background: '#E9EAE8' }}>
+    <section className="py-28" style={{ background: 'var(--color-lightGray)' }}>
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
 
           {/* Left — label + headline + CTA */}
           <motion.div {...fadeUp}>
-            <span style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#1C3F3A', display: 'block', marginBottom: '16px' }}>
+            <span style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-primary)', display: 'block', marginBottom: '16px' }}>
               FAQ
             </span>
             <h2 style={{ lineHeight: 1.08, letterSpacing: '-0.02em', margin: '0 0 16px 0' }}>
-              <span style={{ display: 'block', fontSize: 'clamp(32px,4vw,48px)', fontWeight: 300, color: '#0A0C29' }}>
+              <span style={{ display: 'block', fontSize: 'clamp(32px,4vw,48px)', fontWeight: 300, color: 'var(--color-dark)' }}>
                 Your questions,
               </span>
-              <span style={{ display: 'block', fontSize: 'clamp(32px,4vw,48px)', fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', color: '#1C3F3A' }}>
+              <span style={{ display: 'block', fontSize: 'clamp(32px,4vw,48px)', fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 800, fontStyle: 'italic', color: 'var(--color-primary)' }}>
                 our answers.
               </span>
             </h2>
-            <p style={{ fontSize: '16px', fontWeight: 400, color: '#6b7280', lineHeight: 1.75, maxWidth: '340px', margin: '0 0 32px 0' }}>
+            <p style={{ fontSize: '16px', fontWeight: 400, color: 'var(--color-muted)', lineHeight: 1.75, maxWidth: '340px', margin: '0 0 32px 0' }}>
               Have questions about our cleaning services? We&apos;re here to make everything clear.
             </p>
             <a
               href={`tel:${businessConfig.phone}`}
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', background: '#1C3F3A', color: 'white', fontWeight: 600, fontSize: '14px', padding: '12px 24px', borderRadius: '9999px', textDecoration: 'none', transition: 'background 0.2s ease' }}
-              onMouseEnter={e => { e.currentTarget.style.background = '#142e2a' }}
-              onMouseLeave={e => { e.currentTarget.style.background = '#1C3F3A' }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', background: 'var(--color-primary)', color: 'white', fontWeight: 600, fontSize: '14px', padding: '12px 24px', borderRadius: '9999px', textDecoration: 'none', transition: 'background 0.2s ease' }}
+              onMouseEnter={e => { e.currentTarget.style.background = 'var(--color-primaryDark)' }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'var(--color-primary)' }}
             >
               <i className="fa-solid fa-phone text-xs" />
               Call {businessConfig.phone}
@@ -422,13 +422,13 @@ function FAQ() {
                   >
                     <span style={{
                       fontSize: '16px', fontWeight: 600, paddingRight: '16px',
-                      color: isOpen ? '#1C3F3A' : '#0A0C29',
+                      color: isOpen ? 'var(--color-primary)' : 'var(--color-dark)',
                       transition: 'color 0.3s ease',
                     }}>
                       {item.q}
                     </span>
                     <span style={{
-                      fontSize: '24px', fontWeight: 300, color: '#1C3F3A',
+                      fontSize: '24px', fontWeight: 300, color: 'var(--color-primary)',
                       flexShrink: 0, lineHeight: 1, display: 'inline-block',
                       transition: 'transform 0.3s ease',
                       transform: isOpen ? 'rotate(45deg)' : 'none',
@@ -440,9 +440,9 @@ function FAQ() {
                   <AnimatePresence initial={false}>
                     {isOpen && (
                       <motion.div
-                        initial={{ height: 0, opacity: 0, backgroundColor: '#E9EAE8' }}
-                        animate={{ height: 'auto', opacity: 1, backgroundColor: '#1C3F3A' }}
-                        exit={{ height: 0, opacity: 0, backgroundColor: '#E9EAE8' }}
+                        initial={{ height: 0, opacity: 0, backgroundColor: 'var(--color-lightGray)' }}
+                        animate={{ height: 'auto', opacity: 1, backgroundColor: 'var(--color-primary)' }}
+                        exit={{ height: 0, opacity: 0, backgroundColor: 'var(--color-lightGray)' }}
                         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                         style={{ overflow: 'hidden', borderRadius: '0 0 12px 12px' }}
                       >

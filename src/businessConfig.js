@@ -1,9 +1,33 @@
 export const businessConfig = {
   // Core identity
   name: "PureSpace",
+  namePart1: "Pure",
+  namePart2: "Space",
   tagline: "Cleaning You Don't Have to Think About",
   category: "cleaning",
+  city: "Hyderabad",
   primaryColor: "#1C3F3A",
+  secondaryColor: "#6BBF9E",
+
+  // Color palette — injected as CSS variables at boot
+  colors: {
+    primary:     '#1C3F3A',
+    primaryDark: '#142e2a',
+    secondary:   '#6BBF9E',
+    dark:        '#0A0C29',
+    lightGray:   '#E9EAE8',
+    cream:       '#EBEBE6',
+    white:       '#ffffff',
+    muted:       '#6b7280',
+    border:      '#e5e7eb',
+  },
+
+  // Font config — injected as CSS variables at boot
+  fonts: {
+    primary:       'Inter',
+    display:       'Playfair Display',
+    googleFontsUrl: 'https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800&family=Playfair+Display:ital,wght@1,700;1,800;1,900&display=swap',
+  },
 
   // Hero section
   eyebrow: "HYDERABAD'S TRUSTED CLEANING SERVICE",
@@ -14,6 +38,13 @@ export const businessConfig = {
   heroImage: "https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?w=1400&q=80",
   aboutImage: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80",
   heroSubtext: "Professional home and office cleaning — thorough, reliable, and completely worry-free.",
+
+  // CTA Banner copy (so it's swappable per client)
+  ctaBannerHeadline: "Ready for a space you don't have to think about?",
+  ctaBannerSubtext: "Join 2400+ happy homes across Hyderabad. Same-day booking usually available.",
+
+  // About page hero subtitle
+  aboutHeroSubtitle: "We're a Hyderabad cleaning team obsessed with the details — the corners other services miss are the corners we care about most.",
 
   // CTAs
   ctaPrimary: { label: "Book a Clean", link: "/contact" },
@@ -40,12 +71,19 @@ export const businessConfig = {
   story: "PureSpace started in 2019 with a single van, two cleaners, and a promise — that hiring a cleaning service should feel effortless, not stressful. Years later, that promise hasn't changed. We've cleaned thousands of homes across Hyderabad, but we still treat every space like it's our first job: with care, consistency, and respect for your time.",
   founded: "2019",
 
-  // Stats (for counter animations)
+  // Stats (for counter animations) — string nums for display
   stats: [
     { num: '5',    suffix: '+', label: 'Years of Experience' },
     { num: '2400', suffix: '+', label: 'Homes Cleaned' },
     { num: '4.9',  suffix: '',  label: 'Average Rating' },
     { num: '1200', suffix: '+', label: 'Five-Star Reviews' },
+  ],
+  // Stat values as numbers — used for CountUp animation targets
+  statValues: [
+    { num: 5,    suffix: '+', label: 'Years of Experience' },
+    { num: 2400, suffix: '+', label: 'Homes Cleaned' },
+    { num: 4.9,  suffix: '',  label: 'Average Rating' },
+    { num: 1200, suffix: '+', label: 'Five-Star Reviews' },
   ],
 
   // Trust bar marquee
@@ -58,12 +96,12 @@ export const businessConfig = {
     "ECO-FRIENDLY PRODUCTS"
   ],
 
-  // Team
+  // Team — add real linkedin/instagram URLs when available
   team: [
-    { name: 'Arjun Reddy',  role: 'Founder & Operations', bio: '8 years in professional cleaning.',       image: '' },
-    { name: 'Priya Sharma', role: 'Quality Manager',       bio: 'Makes sure every job meets our standard.', image: '' },
-    { name: 'Vikram Nair',  role: 'Lead Specialist',       bio: 'Deep-clean expert and team trainer.',      image: '' },
-    { name: 'Sneha Rao',    role: 'Client Relations',      bio: 'Your first point of contact, every time.', image: '' },
+    { name: 'Arjun Reddy',  role: 'Founder & Operations', bio: '8 years in professional cleaning.',         image: '', social: { linkedin: '', instagram: '' } },
+    { name: 'Priya Sharma', role: 'Quality Manager',       bio: 'Makes sure every job meets our standard.',  image: '', social: { linkedin: '', instagram: '' } },
+    { name: 'Vikram Nair',  role: 'Lead Specialist',       bio: 'Deep-clean expert and team trainer.',       image: '', social: { linkedin: '', instagram: '' } },
+    { name: 'Sneha Rao',    role: 'Client Relations',      bio: 'Your first point of contact, every time.',  image: '', social: { linkedin: '', instagram: '' } },
   ],
 
   // Services
@@ -143,7 +181,6 @@ export const businessConfig = {
     { src: "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&q=80&w=800", category: "Commercial", alt: "Clean commercial kitchen" },
   ],
 
-  galleryVideo: "https://www.youtube.com/embed/dQw4w9WgXcQ",
   videoUrl: "",
 
   // Marquee strip images (MultiImageMarquee component)
@@ -261,9 +298,16 @@ export const businessConfig = {
     youtube: ""
   },
 
+  // Legal page URLs — set '#' until pages are live
+  legalUrls: {
+    terms:   '#',
+    privacy: '#',
+  },
+
   // AI chat widget
   chatbot: {
     enabled: true,
+    primaryColor: '#1C3F3A',
     greeting: "Hi! 👋 I'm PureSpace's assistant. I can help you with pricing, bookings, or any questions about our cleaning services. What can I help you with?",
     suggestedReplies: [
       "What services do you offer?",

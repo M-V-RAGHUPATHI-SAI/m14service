@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { businessConfig } from '../businessConfig'
@@ -36,7 +36,7 @@ export default function ServicesList() {
                   onMouseEnter={() => setActive(i)}
                   onClick={() => setActive(i)}
                   className={`w-full text-left border-l-2 pl-6 py-6 transition-all duration-300 ${
-                    isActive ? 'border-[#1C3F3A]' : 'border-[#E9EAE8] hover:border-[#1C3F3A]/40'
+                    isActive ? 'border-[var(--color-primary)]' : 'border-[var(--color-lightGray)] hover:border-[var(--color-primary)]/40'
                   }`}
                 >
                   <div className="flex items-center gap-4">
@@ -74,14 +74,14 @@ export default function ServicesList() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="bg-bg-cream rounded-3xl overflow-hidden border border-[#E9EAE8]"
+                className="bg-bg-cream rounded-3xl overflow-hidden border border-[var(--color-lightGray)]"
               >
                 <div className="aspect-[16/10] overflow-hidden">
                   <img src={s.image} alt={s.name} className="w-full h-full object-cover" onError={e => { e.target.style.display = 'none' }} />
                 </div>
                 <div className="p-8">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-11 h-11 rounded-xl bg-[#1C3F3A] text-white flex items-center justify-center">
+                    <div className="w-11 h-11 rounded-xl bg-[var(--color-primary)] text-white flex items-center justify-center">
                       <Icon name={s.icon} size={18} />
                     </div>
                     <h3 className="text-2xl font-bold text-text-dark">{s.name}</h3>

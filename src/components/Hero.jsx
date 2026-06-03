@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { businessConfig } from '../businessConfig'
 
@@ -22,7 +22,7 @@ const trustChips = [
 
 export default function Hero() {
   return (
-    <header className="relative bg-[#1C3F3A] text-white min-h-screen flex items-center overflow-hidden pt-24 pb-16">
+    <header className="relative bg-[var(--color-primary)] text-white min-h-screen flex items-center overflow-hidden pt-24 pb-16">
       <div className="max-w-6xl mx-auto px-6 lg:px-8 w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left */}
@@ -45,7 +45,7 @@ export default function Hero() {
 
             {/* CTAs */}
             <motion.div variants={item} className="mt-9 flex flex-col sm:flex-row gap-4">
-              <Link to={businessConfig.ctaPrimary.link} className="bg-white text-[#0A0C29] font-bold px-8 py-3.5 rounded-full text-center hover:bg-[#EBEBE6] transition-colors">
+              <Link to={businessConfig.ctaPrimary.link} className="bg-white text-[var(--color-dark)] font-bold px-8 py-3.5 rounded-full text-center hover:bg-[var(--color-cream)] transition-colors">
                 {businessConfig.ctaPrimary.label}
               </Link>
               <Link to={businessConfig.ctaSecondary.link} className="border-2 border-white/40 text-white bg-transparent px-8 py-3.5 rounded-full text-center hover:border-white hover:bg-white/10 transition-colors">
@@ -69,7 +69,7 @@ export default function Hero() {
             className="relative hidden lg:block"
           >
             {/* Main card */}
-            <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-[#1C3F3A]">
+            <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-[var(--color-primary)]">
               <img src={businessConfig.heroImage} alt={businessConfig.name} className="w-full h-full object-cover opacity-90" onError={e => { e.target.style.display = 'none' }} />
             </div>
 
@@ -80,8 +80,8 @@ export default function Hero() {
               transition={{ delay: 0.9, duration: 0.6, ease: easeOut }}
               className="absolute bottom-8 -left-8 bg-white rounded-xl p-4 shadow-xl"
             >
-              <div className="text-[#0A0C29] font-extrabold text-2xl">{businessConfig.stats.clients}+</div>
-              <div className="text-[#6b7280] text-xs">Homes Cleaned</div>
+              <div className="text-[var(--color-dark)] font-extrabold text-2xl">{businessConfig.stats.clients}+</div>
+              <div className="text-[var(--color-muted)] text-xs">Homes Cleaned</div>
             </motion.div>
 
             {/* Floating rating card */}
@@ -91,8 +91,8 @@ export default function Hero() {
               transition={{ delay: 1.05, duration: 0.6, ease: easeOut }}
               className="absolute top-8 -right-4 bg-white rounded-xl p-4 shadow-xl"
             >
-              <div className="text-[#1C3F3A] tracking-tight">★★★★★</div>
-              <div className="text-[#0A0C29] font-semibold text-sm mt-0.5">{businessConfig.stats.rating} Rating</div>
+              <div className="text-[var(--color-primary)] tracking-tight">★★★★★</div>
+              <div className="text-[var(--color-dark)] font-semibold text-sm mt-0.5">{businessConfig.stats.rating} Rating</div>
             </motion.div>
           </motion.div>
         </div>

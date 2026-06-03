@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+﻿import { useState, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { businessConfig } from '../businessConfig'
@@ -23,14 +23,14 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const textColor = scrolled ? 'text-[#0A0C29]' : 'text-white'
-  const mutedColor = scrolled ? 'text-[#0A0C29]/60' : 'text-white/70'
+  const textColor = scrolled ? 'text-[var(--color-dark)]' : 'text-white'
+  const mutedColor = scrolled ? 'text-[var(--color-dark)]/60' : 'text-white/70'
 
   return (
     <>
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/95 backdrop-blur-md border-b border-[#e5e7eb]' : 'bg-transparent'
+        scrolled ? 'bg-white/95 backdrop-blur-md border-b border-[var(--color-border)]' : 'bg-transparent'
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
@@ -38,8 +38,8 @@ export default function Navbar() {
 
           {/* Logo */}
           <Link to="/" className="tracking-tight flex-shrink-0" style={{ fontSize: '20px' }}>
-            <span className="font-extrabold" style={{ color: scrolled ? '#6BBF9E' : 'white' }}>Pure</span>
-            <span className="font-light" style={{ color: scrolled ? '#1C3F3A' : 'white' }}>Space</span>
+            <span className="font-extrabold" style={{ color: scrolled ? 'var(--color-secondary)' : 'var(--color-white)' }}>{businessConfig.namePart1}</span>
+            <span className="font-light" style={{ color: scrolled ? 'var(--color-primary)' : 'var(--color-white)' }}>{businessConfig.namePart2}</span>
           </Link>
 
           {/* Center links */}
@@ -71,7 +71,7 @@ export default function Navbar() {
             </a>
 
             {/* Divider — lg+ only */}
-            <span className={`hidden lg:block w-px h-4 ${scrolled ? 'bg-[#e5e7eb]' : 'bg-white/25'}`} />
+            <span className={`hidden lg:block w-px h-4 ${scrolled ? 'bg-[var(--color-border)]' : 'bg-white/25'}`} />
 
             {/* CTA pill */}
             <Link
@@ -80,8 +80,8 @@ export default function Navbar() {
               style={{
                 padding: '8px 20px',
                 fontSize: '13px',
-                background: scrolled ? '#1C3F3A' : 'white',
-                color: scrolled ? 'white' : '#1C3F3A',
+                background: scrolled ? 'var(--color-primary)' : 'var(--color-white)',
+                color: scrolled ? 'var(--color-white)' : 'var(--color-primary)',
               }}
             >
               {businessConfig.ctaPrimary.label}
@@ -115,7 +115,7 @@ export default function Navbar() {
               left: 0,
               right: 0,
               bottom: 0,
-              background: '#1C3F3A',
+              background: 'var(--color-primary)',
               zIndex: 999,
               display: 'flex',
               flexDirection: 'column',
@@ -126,8 +126,8 @@ export default function Navbar() {
             {/* Top bar */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '80px', flexShrink: 0 }}>
               <span style={{ fontSize: '22px' }}>
-                <span style={{ fontWeight: 600, color: 'white' }}>Pure</span>
-                <span style={{ fontWeight: 300, color: 'white' }}>Space</span>
+                <span style={{ fontWeight: 600, color: 'var(--color-white)' }}>{businessConfig.namePart1}</span>
+                <span style={{ fontWeight: 300, color: 'var(--color-white)' }}>{businessConfig.namePart2}</span>
               </span>
               <button onClick={() => setOpen(false)} style={{ padding: '8px', color: 'white', background: 'none', border: 'none', cursor: 'pointer' }} aria-label="Close menu">
                 <i className="fa-solid fa-xmark" style={{ fontSize: '28px' }} />
@@ -172,7 +172,7 @@ export default function Navbar() {
               <Link
                 to={businessConfig.ctaPrimary.link}
                 onClick={() => setOpen(false)}
-                style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', padding: '16px', borderRadius: '9999px', background: 'white', color: '#1C3F3A', fontWeight: 700, fontSize: '16px', textDecoration: 'none' }}
+                style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', padding: '16px', borderRadius: '9999px', background: 'var(--color-white)', color: 'var(--color-primary)', fontWeight: 700, fontSize: '16px', textDecoration: 'none' }}
               >
                 {businessConfig.ctaPrimary.label}
               </Link>
