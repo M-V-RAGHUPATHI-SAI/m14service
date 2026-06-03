@@ -1,34 +1,14 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-
-const faqs = [
-  { q: 'What cleaning services do you offer?' },
-  {
-    q: 'Do I need to provide cleaning supplies equipment?',
-    a: "No, you don't need worry about supplies. Our team arrives fully equipped with professional-grade, eco-friendly cleaning products and tools.",
-    active: true,
-  },
-  { q: 'Are your cleaners trained and insured?' },
-  { q: 'How do I book a cleaning service?' },
-  { q: 'What if I need to reschedule or cancel?' },
-  { q: 'Do you offer eco-friendly or green cleaning options?' },
-]
-
-const answers = {
-  'What cleaning services do you offer?': 'We offer a full range of cleaning services including residential deep cleaning, commercial & office cleaning, move-in/move-out cleaning, window & glass cleaning, and post-construction cleaning.',
-  'Do I need to provide cleaning supplies equipment?': "No, you don't need worry about supplies. Our team arrives fully equipped with professional-grade, eco-friendly cleaning products and tools.",
-  'Are your cleaners trained and insured?': 'Yes! All of our cleaners are thoroughly vetted, professionally trained, and fully insured. You can have complete peace of mind when our team enters your home or office.',
-  'How do I book a cleaning service?': 'You can book online through our contact form, or simply give us a call at 775-229-3115. We\'ll schedule a time that works best for you.',
-  'What if I need to reschedule or cancel?': 'We understand that schedules change. You can reschedule or cancel your appointment up to 24 hours before the service without any penalty.',
-  'Do you offer eco-friendly or green cleaning options?': 'Absolutely! We use eco-friendly, plant-based cleaning solutions that are non-toxic and completely safe for your family, pets, and the environment.',
-}
+import { businessConfig } from '../businessConfig'
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState(1)
+  const [openIndex, setOpenIndex] = useState(0)
+  const faqs = businessConfig.faq
 
   return (
-    <section id="faq" className="section-padding bg-surface overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="faq" className="section-padding bg-bg-light overflow-hidden">
+      <div className="container-page">
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Left */}
           <motion.div
@@ -37,41 +17,39 @@ export default function FAQ() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="flex items-center gap-2 text-navy font-semibold mb-4">
-              <i className="fa-regular fa-circle-question" /> FAQ
-            </div>
-            <h2 className="text-4xl lg:text-5xl font-bold text-navy mb-6 leading-tight">
-              Your Questions, Our Answers<br />Clear, Honest And Helpful
+            <p className="section-label mb-4">FAQ</p>
+            <h2 className="text-4xl lg:text-5xl font-extrabold text-text-dark mb-6 leading-tight">
+              Your questions,<br />our answers
             </h2>
             <p className="text-muted mb-12">
-              Have questions about our cleaning services? We here to make everything clear. From booking and pricing
+              Have questions about our cleaning services? We&apos;re here to make everything clear — from booking to pricing.
             </p>
 
             {/* Still Have Questions Card */}
-            <motion.div 
+            <motion.div
               whileHover={{ y: -5 }}
-              className="bg-white p-8 rounded-2xl border border-surface-dim flex items-center gap-6 card-shadow"
+              className="bg-white p-8 rounded-2xl border border-border flex items-center gap-6 card-shadow"
             >
-              <div className="w-16 h-16 rounded-full bg-surface flex items-center justify-center flex-shrink-0">
-                <i className="fa-solid fa-headset text-2xl text-accent" />
+              <div className="w-16 h-16 rounded-full bg-bg-light flex items-center justify-center flex-shrink-0">
+                <i className="fa-solid fa-headset text-2xl text-primary" />
               </div>
               <div className="flex-1">
-                <h4 className="text-xl font-bold text-navy mb-2">Still Have Questions</h4>
-                <p className="text-sm text-muted mb-4">Still have questions about our cleaning services? We're here to help!</p>
+                <h4 className="text-xl font-bold text-text-dark mb-2">Still Have Questions?</h4>
+                <p className="text-sm text-muted mb-4">We&apos;re here to help — reach out any time.</p>
                 <motion.a
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  href="tel:7752293115"
+                  href={`tel:${businessConfig.phone}`}
                   className="btn-primary w-full py-3 rounded-xl font-medium text-center block text-white"
                 >
-                  Discover More
+                  Call {businessConfig.phone}
                 </motion.a>
               </div>
             </motion.div>
           </motion.div>
 
           {/* Right - FAQ Items */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -80,38 +58,37 @@ export default function FAQ() {
           >
             {faqs.map((faq, i) => {
               const isOpen = openIndex === i
-              const answer = answers[faq.q]
               return (
                 <div
                   key={i}
                   className={`rounded-xl overflow-hidden transition-all duration-300 ${
                     isOpen
-                      ? 'bg-accent text-white shadow-md'
-                      : 'bg-white border border-surface-dim'
+                      ? 'bg-primary text-white shadow-md'
+                      : 'bg-white border border-border'
                   }`}
                 >
                   <button
                     className="w-full px-6 py-4 flex justify-between items-center font-bold text-left"
                     onClick={() => setOpenIndex(isOpen ? -1 : i)}
                   >
-                    <span className={isOpen ? 'text-white' : 'text-navy'}>
+                    <span className={isOpen ? 'text-white' : 'text-text-dark'}>
                       {faq.q}
                     </span>
-                    <motion.i 
+                    <motion.i
                       animate={{ rotate: isOpen ? 180 : 0 }}
-                      className={`fa-solid ${isOpen ? 'fa-chevron-up text-white' : 'fa-chevron-down text-muted'} text-sm ml-4 flex-shrink-0`} 
+                      className={`fa-solid ${isOpen ? 'fa-chevron-up text-white' : 'fa-chevron-down text-muted'} text-sm ml-4 flex-shrink-0`}
                     />
                   </button>
                   <AnimatePresence>
-                    {isOpen && answer && (
-                      <motion.div 
+                    {isOpen && faq.a && (
+                      <motion.div
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                         className="px-6 pb-4 text-sm text-white/90 overflow-hidden"
                       >
-                        {answer}
+                        {faq.a}
                       </motion.div>
                     )}
                   </AnimatePresence>

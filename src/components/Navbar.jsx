@@ -1,100 +1,185 @@
 import { useState, useEffect } from 'react'
+import { Link, NavLink } from 'react-router-dom'
+import { motion, AnimatePresence } from 'framer-motion'
+import { businessConfig } from '../businessConfig'
 
 const links = [
-  { label: 'Home', href: '#home' },
-  { label: 'Services', href: '#services', hasDropdown: true },
-  { label: 'Portfolio', href: '#portfolio' },
-  { label: 'Contact', href: '#contact' },
-];
+  { label: 'Home', to: '/' },
+  { label: 'About', to: '/about' },
+  { label: 'Services', to: '/services' },
+  { label: 'Gallery', to: '/gallery' },
+  { label: 'Testimonials', to: '/testimonials' },
+  { label: 'Contact', to: '/contact' },
+]
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
+    const onScroll = () => setScrolled(window.scrollY > 60)
+    onScroll()
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  const textColor = scrolled ? 'text-[#0A0C29]' : 'text-white'
+  const mutedColor = scrolled ? 'text-[#0A0C29]/60' : 'text-white/70'
+
   return (
+    <>
     <nav
-      className={`fixed w-full z-50 top-0 left-0 text-white transition-all duration-500 ${
-        scrolled
-          ? 'bg-navy shadow-lg shadow-navy/30'
-          : 'bg-transparent'
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        scrolled ? 'bg-white/95 backdrop-blur-md border-b border-[#e5e7eb]' : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-18">
-          {/* Logo */}
-          <a href="#home" className="flex-shrink-0 flex items-center gap-2">
-            <img src="/logom14.jpg" alt="M14 Logo" className="h-10 w-auto object-contain" />
-            <span className="font-bold text-2xl tracking-tight">M14 Service</span>
-          </a>
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+        <div className="flex items-center justify-between h-14">
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8 items-center">
+          {/* Logo */}
+          <Link to="/" className="tracking-tight flex-shrink-0" style={{ fontSize: '20px' }}>
+            <span className="font-extrabold" style={{ color: scrolled ? '#6BBF9E' : 'white' }}>Pure</span>
+            <span className="font-light" style={{ color: scrolled ? '#1C3F3A' : 'white' }}>Space</span>
+          </Link>
+
+          {/* Center links */}
+          <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-7">
             {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                className="hover:text-accent transition-colors font-medium flex items-center gap-1"
+              <NavLink
+                key={l.to}
+                to={l.to}
+                className={({ isActive }) =>
+                  `transition-colors ${textColor} ${isActive ? 'opacity-100 font-medium' : 'opacity-70 hover:opacity-100'}`
+                }
+                style={{ fontSize: '13px', letterSpacing: '0.01em' }}
               >
                 {l.label}
-                {l.hasDropdown && (
-                  <i className="fa-solid fa-chevron-down text-xs" />
-                )}
-              </a>
+              </NavLink>
             ))}
           </div>
 
-          {/* Call Action */}
-          <div className="hidden lg:flex items-center gap-3 bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm border border-white/20">
-            <div className="bg-white text-navy rounded-full w-8 h-8 flex items-center justify-center">
-              <i className="fa-solid fa-phone text-sm" />
-            </div>
-            <div className="text-sm">
-              <p className="text-white/80 text-xs">Call Now</p>
-              <a href="tel:+447723819014" className="font-bold hover:text-accent transition-colors">+44 7723 819014</a>
-            </div>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setOpen(!open)}
-              className="text-white hover:text-accent focus:outline-none p-2"
-              aria-label="Toggle menu"
-            >
-              <i className={`fa-solid ${open ? 'fa-xmark' : 'fa-bars'} text-2xl`} />
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      <div className={`md:hidden overflow-hidden transition-all duration-300 bg-navy/95 backdrop-blur-lg ${open ? 'max-h-96' : 'max-h-0'}`}>
-        <div className="px-4 py-4 flex flex-col gap-1">
-          {links.map((l) => (
+          {/* Right side — phone (lg+) + CTA */}
+          <div className="hidden md:flex items-center gap-4 flex-shrink-0">
+            {/* Phone — lg+ only */}
             <a
-              key={l.href}
-              href={l.href}
-              onClick={() => setOpen(false)}
-              className="px-4 py-3 text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all"
+              href={`tel:${businessConfig.phone}`}
+              className={`hidden lg:flex items-center gap-2 transition-colors ${mutedColor} hover:opacity-100`}
+              style={{ fontSize: '13px' }}
             >
-              {l.label}
+              <i className="fa-solid fa-phone text-xs" />
+              <span style={{ fontWeight: 500 }}>{businessConfig.phone}</span>
             </a>
-          ))}
-          <a
-            href="tel:7752293115"
-            onClick={() => setOpen(false)}
-            className="mt-2 px-4 py-3 bg-accent text-white text-sm font-bold rounded-lg text-center"
+
+            {/* Divider — lg+ only */}
+            <span className={`hidden lg:block w-px h-4 ${scrolled ? 'bg-[#e5e7eb]' : 'bg-white/25'}`} />
+
+            {/* CTA pill */}
+            <Link
+              to={businessConfig.ctaPrimary.link}
+              className="inline-flex items-center rounded-full font-semibold transition-colors"
+              style={{
+                padding: '8px 20px',
+                fontSize: '13px',
+                background: scrolled ? '#1C3F3A' : 'white',
+                color: scrolled ? 'white' : '#1C3F3A',
+              }}
+            >
+              {businessConfig.ctaPrimary.label}
+            </Link>
+          </div>
+
+          {/* Mobile toggle */}
+          <button
+            onClick={() => setOpen(true)}
+            className={`md:hidden p-2 ${textColor}`}
+            aria-label="Open menu"
           >
-            Call 775-229-3115
-          </a>
+            <i className="fa-solid fa-bars text-2xl" />
+          </button>
         </div>
       </div>
+
     </nav>
+
+    {/* Mobile full-screen overlay — sibling of nav, never inside backdrop-filter parent */}
+    <AnimatePresence>
+      {open && (
+        <motion.div
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: '#1C3F3A',
+              zIndex: 999,
+              display: 'flex',
+              flexDirection: 'column',
+              padding: '0 32px 40px',
+            }}
+            className="md:hidden"
+          >
+            {/* Top bar */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '80px', flexShrink: 0 }}>
+              <span style={{ fontSize: '22px' }}>
+                <span style={{ fontWeight: 600, color: 'white' }}>Pure</span>
+                <span style={{ fontWeight: 300, color: 'white' }}>Space</span>
+              </span>
+              <button onClick={() => setOpen(false)} style={{ padding: '8px', color: 'white', background: 'none', border: 'none', cursor: 'pointer' }} aria-label="Close menu">
+                <i className="fa-solid fa-xmark" style={{ fontSize: '28px' }} />
+              </button>
+            </div>
+
+            {/* Nav links */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0', marginTop: '48px', flex: 1 }}>
+              {links.map((l, i) => (
+                <motion.div
+                  key={l.to}
+                  initial={{ x: -20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ duration: 0.4, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <NavLink
+                    to={l.to}
+                    onClick={() => setOpen(false)}
+                    style={({ isActive }) => ({
+                      display: 'block',
+                      fontSize: '32px',
+                      fontWeight: 700,
+                      color: 'white',
+                      opacity: isActive ? 1 : 0.6,
+                      padding: '12px 0',
+                      borderBottom: '1px solid rgba(255,255,255,0.1)',
+                      textDecoration: 'none',
+                    })}
+                  >
+                    {l.label}
+                  </NavLink>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Bottom CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: links.length * 0.07 + 0.1, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Link
+                to={businessConfig.ctaPrimary.link}
+                onClick={() => setOpen(false)}
+                style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', padding: '16px', borderRadius: '9999px', background: 'white', color: '#1C3F3A', fontWeight: 700, fontSize: '16px', textDecoration: 'none' }}
+              >
+                {businessConfig.ctaPrimary.label}
+              </Link>
+            </motion.div>
+          </motion.div>
+        )}
+    </AnimatePresence>
+    </>
   )
 }
