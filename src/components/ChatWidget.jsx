@@ -4,15 +4,7 @@ import { businessConfig } from '../businessConfig'
 
 const ease = [0.22, 1, 0.36, 1]
 
-/* ─────────────────────────────────────────────
-   API CONFIG — Groq (free tier, no billing needed)
-   ⚠️  A Vite VITE_ env var is bundled into the public JS, so this key is
-   visible to anyone who views the site. Fine for testing; for production
-   route the request through a serverless proxy that holds the key
-   server-side. Get a free key at console.groq.com/keys.
-   ───────────────────────────────────────────── */
-const GROQ_KEY = import.meta.env.VITE_GROQ_API_KEY || ''
-const GROQ_ENDPOINT = 'https://api.groq.com/openai/v1/chat/completions'
+const GROQ_ENDPOINT = '/api/chat'
 const GROQ_MODEL = 'llama-3.1-8b-instant'
 
 /* Build the system prompt from businessConfig */
@@ -180,7 +172,6 @@ export default function ChatWidget() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${GROQ_KEY}`,
         },
         body: JSON.stringify({
           model: GROQ_MODEL,
